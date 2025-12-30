@@ -17,16 +17,17 @@
     <div class="row justify-content-between">
         <div class="row blog-sidebar grid-content col-lg-8">
             <div class="grid-sizer col-12"></div>
+            @foreach($posts as $post)
             <article class="grid-item col-12 pb-lg-5">
-                <div class="work-card card--is-link"><a class="post_thumb" href="{{ route('blog.post') }}">
-                    <figure class="card__img media-wrapper media-wrapper--16:9"><img src="{{ asset('assets/img/blog/jr-post-default.png') }}" alt="Your Key To Success: GAME">
+                <div class="work-card card--is-link"><a class="post_thumb" href="{{ route('blog.post', $post) }}">
+                    <figure class="card__img media-wrapper media-wrapper--16:9"><img src="{{ asset($post->image) }}" alt="{{ $post->title }}">
                         <div class="glow-wrap"><i class="glow"></i></div>
                     </figure></a>
-                    <div class="card__content"><a class="card__title" href="{{ route('blog.post') }}">
-                        <h4>Your Key To Success: GAME</h4></a>
-                        <div class="post-meta-default"><span class="post__date">July 26, 2020</span><span role="separator"></span><span class="post__category link"><a href="#">design</a></span></div>
-                        <p class="text-sm post-excerpt">Objectively maintain sticky initiatives whereas technically sound niches. Conveniently leverage others principle-centered catalysts for change before dynamic information.</p>
-                        <div class="post-info__footer"><span class="post-author__name">By Mad Sparrow</span><span class="post-info__divider"></span><a class="post-read-more" href="{{ route('blog.post') }}">Read more
+                    <div class="card__content"><a class="card__title" href="{{ route('blog.post', $post) }}">
+                        <h4>{{ $post->title }}</h4></a>
+                        <div class="post-meta-default"><span class="post__date">{{ $post->created_at->format('F d, Y') }}</span><span role="separator"></span><span class="post__category link"><a href="#">{{ $post->category }}</a></span></div>
+                        <p class="text-sm post-excerpt">{{ $post->excerpt }}</p>
+                        <div class="post-info__footer"><span class="post-author__name">By Admin</span><span class="post-info__divider"></span><a class="post-read-more" href="{{ route('blog.post', $post) }}">Read more
                             <svg class="icon" viewBox="0 0 12 12">
                                 <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
@@ -36,44 +37,7 @@
                     </div>
                 </div>
             </article>
-            <article class="grid-item col-12 pb-lg-5">
-                <div class="work-card card--is-link"><a class="post_thumb" href="{{ route('blog.post') }}">
-                    <figure class="card__img media-wrapper media-wrapper--16:9"><img src="{{ asset('assets/img/blog/jr-post-default.png') }}" alt="Willow of Soaring">
-                        <div class="glow-wrap"><i class="glow"></i></div>
-                    </figure></a>
-                    <div class="card__content"><a class="card__title" href="{{ route('blog.post') }}">
-                        <h4>Willow of Soaring</h4></a>
-                        <div class="post-meta-default"><span class="post__date">July 26, 2020</span><span role="separator"></span><span class="post__category link"><a href="#">story</a></span></div>
-                        <p class="text-sm post-excerpt">Credibly negotiate standardized metrics without premium collaboration and idea-sharing. Completely pursue distinctive testing procedures for one-to-one channels.</p>
-                        <div class="post-info__footer"><span class="post-author__name">By Mad Sparrow</span><span class="post-info__divider"></span><a class="post-read-more" href="{{ route('blog.post') }}">Read more
-                            <svg class="icon" viewBox="0 0 12 12">
-                                <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
-                                    <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
-                                </g>
-                            </svg></a></div>
-                    </div>
-                </div>
-            </article>
-            <article class="grid-item col-12 pb-lg-5">
-                <div class="work-card card--is-link"><a class="post_thumb" href="{{ route('blog.post') }}">
-                    <figure class="card__img media-wrapper media-wrapper--16:9"><img src="{{ asset('assets/img/blog/jr-post-default.png') }}" alt="Healing in the Memory">
-                        <div class="glow-wrap"><i class="glow"></i></div>
-                    </figure></a>
-                    <div class="card__content"><a class="card__title" href="{{ route('blog.post') }}">
-                        <h4>Healing in the Memory</h4></a>
-                        <div class="post-meta-default"><span class="post__date">July 26, 2020</span><span role="separator"></span><span class="post__category link"><a href="#">creativity</a></span></div>
-                        <p class="text-sm post-excerpt">Collaboratively pursue maintainable mindshare before sticky internal or organic sources. Credibly scale flexible metrics vis-a-vis market-driven data.</p>
-                        <div class="post-info__footer"><span class="post-author__name">By Mad Sparrow</span><span class="post-info__divider"></span><a class="post-read-more" href="{{ route('blog.post') }}">Read more
-                            <svg class="icon" viewBox="0 0 12 12">
-                                <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
-                                    <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
-                                </g>
-                            </svg></a></div>
-                    </div>
-                </div>
-            </article>
+            @endforeach
             <div class="grid-item ms-pagination col-lg-12 pb-lg-3 pt-lg-3">
                 <nav class="pagination">
                     <ol class="pagination__list">
@@ -104,18 +68,12 @@
                     <h5>Recent Posts</h5>
                 </div>
                 <ul>
+                    @foreach($recentPosts as $recent)
                     <li class="recent-post">
-                        <div class="post-image"><a href="{{ route('blog.post') }}"><img src="{{ asset('assets/img/blog/sidebar/b-s-img.png') }}" alt="img title"></a></div>
-                        <div class="recent-post__info"><a href="{{ route('blog.post') }}">Five Fantastic Experience</a><span class="post-date">July 26, 2020</span></div>
+                        <div class="post-image"><a href="{{ route('blog.post', $recent) }}"><img src="{{ asset($recent->image) }}" alt="{{ $recent->title }}"></a></div>
+                        <div class="recent-post__info"><a href="{{ route('blog.post', $recent) }}">{{ $recent->title }}</a><span class="post-date">{{ $recent->created_at->format('F d, Y') }}</span></div>
                     </li>
-                    <li class="recent-post">
-                        <div class="post-image"><a href="{{ route('blog.post') }}"><img src="{{ asset('assets/img/blog/sidebar/b-s-img.png') }}" alt="img title"></a></div>
-                        <div class="recent-post__info"><a href="{{ route('blog.post') }}">We Love Design</a><span class="post-date">July 26, 2020</span></div>
-                    </li>
-                    <li class="recent-post">
-                        <div class="post-image"><a href="{{ route('blog.post') }}"><img src="{{ asset('assets/img/blog/sidebar/b-s-img.png') }}" alt="img title"></a></div>
-                        <div class="recent-post__info"><a href="{{ route('blog.post') }}">You Should Experience</a><span class="post-date">July 26, 2020</span></div>
-                    </li>
+                    @endforeach
                 </ul>
             </aside>
             <aside class="widget_categories">

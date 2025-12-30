@@ -8,32 +8,44 @@
 <section class="hero hero--overlay-layer hero-default">
     <div class="container">
         <div class="hero__content text-left"><span>Single Portfolio Page</span>
-            <h1>The Wizards of the Soul</h1>
-            <p>Phosfluorescently orchestrate emerging intellectual capital rather than efficient growth strategies. Conveniently coordinate sticky channels without.</p>
+            <h1>{{ $portfolio->title }}</h1>
+            <p>{{ $portfolio->description }}</p>
         </div>
     </div>
 </section>
 <div class="container ms-content--portfolio">
     <div class="row grid-content blockgallery">
-        <div class="grid-sizer col-xs-12 col-md-4 col-sm-3"></div>
-        <div class="grid-item col-xs-12 col-md-4 col-sm-3"><a class="mfp-img has-img" href="{{ asset('assets/img/portfolio/jr_pf.png') }}"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="image description"></a></div>
-        <div class="grid-sizer col-xs-12 col-md-4 col-sm-3"></div>
-        <div class="grid-item col-xs-12 col-md-4 col-sm-3"><a class="mfp-img has-img" href="{{ asset('assets/img/portfolio/jr_pf.png') }}"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="image description"></a></div>
-        <div class="grid-sizer col-xs-12 col-md-4 col-sm-3"></div>
-        <div class="grid-item col-xs-12 col-md-4 col-sm-3"><a class="mfp-img has-img" href="{{ asset('assets/img/portfolio/jr_pf.png') }}"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="image description"></a></div>
-        <div class="grid-sizer col-xs-12 col-md-4 col-sm-3"></div>
-        <div class="grid-item col-xs-12 col-md-4 col-sm-3"><a class="mfp-img has-img" href="{{ asset('assets/img/portfolio/jr_pf.png') }}"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="image description"></a></div>
-        <div class="grid-sizer col-xs-12 col-md-4 col-sm-3"></div>
-        <div class="grid-item col-xs-12 col-md-4 col-sm-3"><a class="mfp-img has-img" href="{{ asset('assets/img/portfolio/jr_pf.png') }}"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="image description"></a></div>
-        <div class="grid-sizer col-xs-12 col-md-4 col-sm-3"></div>
-        <div class="grid-item col-xs-12 col-md-4 col-sm-3"><a class="mfp-img has-img" href="{{ asset('assets/img/portfolio/jr_pf.png') }}"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="image description"></a></div>
+        @if($portfolio->gallery && count($portfolio->gallery) > 0)
+            @foreach($portfolio->gallery as $image)
+            <div class="grid-sizer col-xs-12 col-md-4 col-sm-3"></div>
+            <div class="grid-item col-xs-12 col-md-4 col-sm-3">
+                <a class="mfp-img has-img" href="{{ asset($image) }}">
+                    <img src="{{ asset($image) }}" alt="{{ $portfolio->title }}">
+                </a>
+            </div>
+            @endforeach
+        @else
+            {{-- Fallback if no gallery, show main image multiple times for layout demo --}}
+            @for($i = 0; $i < 6; $i++)
+            <div class="grid-sizer col-xs-12 col-md-4 col-sm-3"></div>
+            <div class="grid-item col-xs-12 col-md-4 col-sm-3">
+                <a class="mfp-img has-img" href="{{ asset($portfolio->image) }}">
+                    <img src="{{ asset($portfolio->image) }}" alt="{{ $portfolio->title }}">
+                </a>
+            </div>
+            @endfor
+        @endif
     </div>
     <div class="ms-next-case">
         <div class="single-portfolio-nav">
-            <div class="s-p-next"><a href="{{ route('portfolio.single') }}"><img src="{{ asset('assets/img/portfolio/jr_pf-next(1140x300).png') }}" alt="img title">
-                <div class="container"><span>Next</span>
-                    <h1>The Drive of your life</h1>
-                </div></a></div>
+            <div class="s-p-next">
+                <a href="{{ route('portfolio.single', $nextPortfolio) }}">
+                    <img src="{{ asset($nextPortfolio->image) }}" alt="{{ $nextPortfolio->title }}">
+                    <div class="container"><span>Next</span>
+                        <h1>{{ $nextPortfolio->title }}</h1>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
     <div class="container ms-cta">

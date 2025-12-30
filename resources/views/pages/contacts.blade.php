@@ -20,23 +20,31 @@
         <div class="col-12 col-md-6 col-lg-6 contact__list pr-lg-5 pr-md-3">
             <div class="contact__item">
                 <h4>Address</h4>
-                <p class="text-sm">88 Whitby Road<br>IP20 6JA<br>London, UK</p>
+                <p class="text-sm">{!! nl2br(\App\Models\Setting::get('site_address', '88 Whitby Road<br>IP20 6JA<br>London, UK')) !!}</p>
             </div>
             <div class="contact__item">
                 <h4>Email</h4>
-                <p class="text-sm"><a href="mailto:hello@myemail.com">hello@myemail.com</a></p>
+                <p class="text-sm"><a href="mailto:{!! \App\Models\Setting::get('contact_email', 'hello@myemail.com') !!}">{!! \App\Models\Setting::get('contact_email', 'hello@myemail.com') !!}</a></p>
             </div>
             <div class="contact__item">
                 <h4>Phone</h4>
-                <p class="text-sm"><a href="tel:+447356648">+44 7356 6487</a><br><small class="color-contrast-medium">Mon - Fri, 8AM - 7PM</small></p>
+                <p class="text-sm"><a href="tel:{!! \App\Models\Setting::get('contact_phone', '+44 7356 6487') !!}">{!! \App\Models\Setting::get('contact_phone', '+44 7356 6487') !!}</a></p>
             </div>
             <div class="contact__item">
                 <h4>Socials</h4>
                 <ul class="socials">
-                    <li class="ms-btn"><a class="socicon-twitter" title="Twitter" target="_blank" href="http://twitter.com/"></a></li>
-                    <li class="ms-btn"><a class="socicon-dribbble" title="Dribbble" target="_blank" href="http://dribbble.com/"></a></li>
-                    <li class="ms-btn"><a class="socicon-facebook" title="Facebook" target="_blank" href="https://www.facebook.com/"></a></li>
-                    <li class="ms-btn"><a class="socicon-instagram" title="Instagram" target="_blank" href="https://www.instagram.com/"></a></li>
+                    @if(\App\Models\Setting::get('social_twitter'))
+                    <li class="ms-btn"><a class="socicon-twitter" title="Twitter" target="_blank" href="{!! \App\Models\Setting::get('social_twitter') !!}"></a></li>
+                    @endif
+                    @if(\App\Models\Setting::get('social_facebook'))
+                    <li class="ms-btn"><a class="socicon-facebook" title="Facebook" target="_blank" href="{!! \App\Models\Setting::get('social_facebook') !!}"></a></li>
+                    @endif
+                    @if(\App\Models\Setting::get('social_instagram'))
+                    <li class="ms-btn"><a class="socicon-instagram" title="Instagram" target="_blank" href="{!! \App\Models\Setting::get('social_instagram') !!}"></a></li>
+                    @endif
+                    @if(\App\Models\Setting::get('social_linkedin'))
+                    <li class="ms-btn"><a class="socicon-linkedin" title="LinkedIn" target="_blank" href="{!! \App\Models\Setting::get('social_linkedin') !!}"></a></li>
+                    @endif
                 </ul>
             </div>
         </div>

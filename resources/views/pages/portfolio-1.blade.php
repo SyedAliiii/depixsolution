@@ -54,159 +54,32 @@
     </div>
     <div class="row ms-p2 work-grid parent grid grid-gap-lg grid-content portfolio-feed">
         <div class="grid-sizer col-xs-12 col-md-4 col-sm-4"></div>
-        <div class="grid-item mb-5 col-xs-12 col-md-4 col-sm-4 design">
-            <div class="work-card card--is-link"><a class="work-card__img-link" href="{{ route('portfolio.single') }}" aria-label="Servant of academy">
-                <figure class="work-card__img media-wrapper media-wrapper--3:4"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="Servant of academy">
-                    <div class="glow-wrap"><i class="glow vertical"></i></div>
-                </figure></a>
-                <div class="work-card__content"><span class="work-card__badge margin-bottom-xxs">design</span><a class="work-card__title" href="{{ route('portfolio.single') }}">
-                    <h3>Servant of academy</h3>
+        @foreach($portfolios as $portfolio)
+        <div class="grid-item mb-5 col-xs-12 col-md-4 col-sm-4 {{ $portfolio->category }}">
+            <div class="work-card card--is-link">
+                <a class="work-card__img-link" href="{{ route('portfolio.single', $portfolio) }}" aria-label="{{ $portfolio->title }}">
+                    <figure class="work-card__img media-wrapper media-wrapper--3:4">
+                        <img src="{{ asset($portfolio->image) }}" alt="{{ $portfolio->title }}">
+                        <div class="glow-wrap"><i class="glow vertical"></i></div>
+                    </figure>
+                </a>
+                <div class="work-card__content">
+                    <span class="work-card__badge margin-bottom-xxs">{{ $portfolio->category }}</span>
+                    <a class="work-card__title" href="{{ route('portfolio.single', $portfolio) }}">
+                        <h3>{{ $portfolio->title }}</h3>
                     </a>
-                    <a class="work-card__link" href="{{ route('portfolio.single') }}">Show Project
+                    <a class="work-card__link" href="{{ route('portfolio.single', $portfolio) }}">Show Project
                         <svg class="icon" viewBox="0 0 12 12">
                             <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
                                 <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
                             </g>
-                        </svg></a></div>
-            </div>
-        </div>
-        <div class="grid-item mb-5 col-xs-12 col-md-4 col-sm-4 project">
-            <div class="work-card card--is-link"><a class="work-card__img-link" href="{{ route('portfolio.single') }}" aria-label="The kissing eyes">
-                <figure class="work-card__img media-wrapper media-wrapper--3:4"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="The kissing eyes">
-                    <div class="glow-wrap"><i class="glow vertical"></i></div>
-                </figure></a>
-                <div class="work-card__content"><span class="work-card__badge margin-bottom-xxs">project</span><a class="work-card__title" href="{{ route('portfolio.single') }}">
-                    <h3>The kissing eyes</h3>
+                        </svg>
                     </a>
-                    <a class="work-card__link" href="{{ route('portfolio.single') }}">Show Project
-                        <svg class="icon" viewBox="0 0 12 12">
-                            <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
-                                <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
-                            </g>
-                        </svg></a></div>
+                </div>
             </div>
         </div>
-        <div class="grid-item mb-5 col-xs-12 col-md-4 col-sm-4 trend">
-            <div class="work-card card--is-link"><a class="work-card__img-link" href="{{ route('portfolio.single') }}" aria-label="Silk of secrets">
-                <figure class="work-card__img media-wrapper media-wrapper--3:4"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="Silk of secrets">
-                    <div class="glow-wrap"><i class="glow vertical"></i></div>
-                </figure></a>
-                <div class="work-card__content"><span class="work-card__badge margin-bottom-xxs">trend</span><a class="work-card__title" href="{{ route('portfolio.single') }}">
-                    <h3>Silk of secrets</h3>
-                    </a>
-                    <a class="work-card__link" href="{{ route('portfolio.single') }}">Show Project
-                        <svg class="icon" viewBox="0 0 12 12">
-                            <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
-                                <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
-                            </g>
-                        </svg></a></div>
-            </div>
-        </div>
-        <div class="grid-item mb-5 col-xs-12 col-md-4 col-sm-4 project">
-            <div class="work-card card--is-link"><a class="work-card__img-link" href="{{ route('portfolio.single') }}" aria-label="Emerald in the children">
-                <figure class="work-card__img media-wrapper media-wrapper--3:4"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="Emerald in the children">
-                    <div class="glow-wrap"><i class="glow vertical"></i></div>
-                </figure></a>
-                <div class="work-card__content"><span class="work-card__badge margin-bottom-xxs">project</span><a class="work-card__title" href="{{ route('portfolio.single') }}">
-                    <h3>Emerald in the children</h3>
-                    </a>
-                    <a class="work-card__link" href="{{ route('portfolio.single') }}">Show Project
-                        <svg class="icon" viewBox="0 0 12 12">
-                            <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
-                                <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
-                            </g>
-                        </svg></a></div>
-            </div>
-        </div>
-        <div class="grid-item mb-5 col-xs-12 col-md-4 col-sm-4 design">
-            <div class="work-card card--is-link"><a class="work-card__img-link" href="{{ route('portfolio.single') }}" aria-label="Wind in the storms">
-                <figure class="work-card__img media-wrapper media-wrapper--3:4"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="Wind in the storms">
-                    <div class="glow-wrap"><i class="glow vertical"></i></div>
-                </figure></a>
-                <div class="work-card__content"><span class="work-card__badge margin-bottom-xxs">design</span><a class="work-card__title" href="{{ route('portfolio.single') }}">
-                    <h3>Wind in the storms</h3>
-                    </a>
-                    <a class="work-card__link" href="{{ route('portfolio.single') }}">Show Project
-                        <svg class="icon" viewBox="0 0 12 12">
-                            <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
-                                <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
-                            </g>
-                        </svg></a></div>
-            </div>
-        </div>
-        <div class="grid-item mb-5 col-xs-12 col-md-4 col-sm-4 trend">
-            <div class="work-card card--is-link"><a class="work-card__img-link" href="{{ route('portfolio.single') }}" aria-label="Legacy of rainbow">
-                <figure class="work-card__img media-wrapper media-wrapper--3:4"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="Legacy of rainbow">
-                    <div class="glow-wrap"><i class="glow vertical"></i></div>
-                </figure></a>
-                <div class="work-card__content"><span class="work-card__badge margin-bottom-xxs">trend</span><a class="work-card__title" href="{{ route('portfolio.single') }}">
-                    <h3>Legacy of rainbow</h3>
-                    </a>
-                    <a class="work-card__link" href="{{ route('portfolio.single') }}">Show Project
-                        <svg class="icon" viewBox="0 0 12 12">
-                            <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
-                                <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
-                            </g>
-                        </svg></a></div>
-            </div>
-        </div>
-        <div class="grid-item mb-5 col-xs-12 col-md-4 col-sm-4 trend">
-            <div class="work-card card--is-link"><a class="work-card__img-link" href="{{ route('portfolio.single') }}" aria-label="Dance and night club">
-                <figure class="work-card__img media-wrapper media-wrapper--3:4"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="Dance and night club">
-                    <div class="glow-wrap"><i class="glow vertical"></i></div>
-                </figure></a>
-                <div class="work-card__content"><span class="work-card__badge margin-bottom-xxs">trend</span><a class="work-card__title" href="{{ route('portfolio.single') }}">
-                    <h3>Dance and night club</h3>
-                    </a>
-                    <a class="work-card__link" href="{{ route('portfolio.single') }}">Show Project
-                        <svg class="icon" viewBox="0 0 12 12">
-                            <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
-                                <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
-                            </g>
-                        </svg></a></div>
-            </div>
-        </div>
-        <div class="grid-item mb-5 col-xs-12 col-md-4 col-sm-4 project">
-            <div class="work-card card--is-link"><a class="work-card__img-link" href="{{ route('portfolio.single') }}" aria-label="All in love with water">
-                <figure class="work-card__img media-wrapper media-wrapper--3:4"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="All in love with water">
-                    <div class="glow-wrap"><i class="glow vertical"></i></div>
-                </figure></a>
-                <div class="work-card__content"><span class="work-card__badge margin-bottom-xxs">project</span><a class="work-card__title" href="{{ route('portfolio.single') }}">
-                    <h3>All in love with water</h3>
-                    </a>
-                    <a class="work-card__link" href="{{ route('portfolio.single') }}">Show Project
-                        <svg class="icon" viewBox="0 0 12 12">
-                            <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
-                                <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
-                            </g>
-                        </svg></a></div>
-            </div>
-        </div>
-        <div class="grid-item mb-5 col-xs-12 col-md-4 col-sm-4 design">
-            <div class="work-card card--is-link"><a class="work-card__img-link" href="{{ route('portfolio.single') }}" aria-label="The wizards of the soul">
-                <figure class="work-card__img media-wrapper media-wrapper--3:4"><img src="{{ asset('assets/img/portfolio/jr_pf.png') }}" alt="The wizards of the soul">
-                    <div class="glow-wrap"><i class="glow vertical"></i></div>
-                </figure></a>
-                <div class="work-card__content"><span class="work-card__badge margin-bottom-xxs">design</span><a class="work-card__title" href="{{ route('portfolio.single') }}">
-                    <h3>The wizards of the soul</h3>
-                    </a>
-                    <a class="work-card__link" href="{{ route('portfolio.single') }}">Show Project
-                        <svg class="icon" viewBox="0 0 12 12">
-                            <g stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="11.5" y1="6" x2="0.5" y2="6"></line>
-                                <polyline points="7.5 2 11.5 6 7.5 10"></polyline>
-                            </g>
-                        </svg></a></div>
-            </div>
-        </div>
+        @endforeach
     </div>
     <div class="ms-pagination works-pagination">
         <button class="btn btn--sm btn-load-more btn--primary btn--preserve-width">Load More</button>

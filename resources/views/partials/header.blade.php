@@ -33,8 +33,8 @@
                 </li>
                 <li class="menu-item menu-item-has-children"> <a>Pages</a>
                     <ul class="sub-menu">
-                        <li class="menu-item"><a href="{{ route('portfolio.single') }}">Single Portfolio</a></li>
-                        <li class="menu-item"><a href="{{ route('blog.post') }}">Single Post</a></li>
+                        <li class="menu-item"><a href="{{ route('portfolio.1') }}">Single Portfolio</a></li>
+                        <li class="menu-item"><a href="{{ route('blog.post', ['post' => 1]) }}">Single Post</a></li>
                         <li class="menu-item"><a href="{{ route('error.404') }}">Page 404</a></li>
                     </ul>
                 </li>

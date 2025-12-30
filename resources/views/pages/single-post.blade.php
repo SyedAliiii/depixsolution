@@ -8,8 +8,8 @@
 <section class="hero hero--overlay-layer hero-default">
     <div class="container">
         <div class="hero__content text-left"><span>Single Post</span>
-            <h1>Your Key To Success: GAME</h1>
-            <p>Globally e-enable an expanded array of bandwidth before process-centric deliverables.</p>
+            <h1>{{ $post->title }}</h1>
+            <p>{{ $post->excerpt }}</p>
         </div>
     </div>
 </section>
@@ -18,28 +18,19 @@
         <div class="row blog-sidebar grid-content col-lg-8">
             <article class="single-post col-12">
                 <figure class="post-thumbnail media-wrapper media-wrapper--16:9">
-                    <img src="{{ asset('assets/img/blog/jr-post-default.png') }}" alt="Your Key To Success: GAME">
+                    <img src="{{ asset($post->image ?? 'assets/img/blog/jr-post-default.png') }}" alt="{{ $post->title }}">
                 </figure>
                 <div class="post-content text-component">
                     <div class="post-meta-default">
-                        <span class="post__date">July 26, 2020</span>
+                        <span class="post__date">{{ $post->created_at->format('F d, Y') }}</span>
                         <span role="separator"></span>
-                        <span class="post__category link"><a href="#">design</a></span>
+                        <span class="post__category link"><a href="#">{{ $post->category }}</a></span>
                     </div>
-                    <p>Objectively maintain sticky initiatives whereas technically sound niches. Conveniently leverage others principle-centered catalysts for change before dynamic information. Collaboratively pursue maintainable mindshare before sticky internal or organic sources.</p>
-                    <p>Credibly negotiate standardized metrics without premium collaboration and idea-sharing. Completely pursue distinctive testing procedures for one-to-one channels. Professionally plagiarize installed base testing procedures whereas client-centric services.</p>
-                    <h3>The Power of Design</h3>
-                    <p>Credibly scale flexible metrics vis-a-vis market-driven data. Credibly aggregate best-of-breed meta-services rather than seamless intellectual capital. Appropriately myocardinate sustainable paradigms with synergistic sources.</p>
-                    <blockquote>
-                        <p>Monotonectally whiteboard inexpensive data with premium outside the box thinking. Enthusiastically expedite user friendly alignments rather than parallel initiatives.</p>
-                    </blockquote>
-                    <p>Interactively embrace extensible collaboration and idea-sharing for economically sound expertise. Assertively parallel task intermandated technologies through customized sources.</p>
+                    {!! $post->content !!}
                 </div>
                 <div class="post-tags">
-                    <span>Tags:</span>
-                    <a href="#">Art</a>
-                    <a href="#">Design</a>
-                    <a href="#">Technology</a>
+                    <span>Category:</span>
+                    <a href="#">{{ $post->category }}</a>
                 </div>
                 <div class="post-share">
                     <span>Share:</span>
@@ -57,18 +48,19 @@
                     <h5>Recent Posts</h5>
                 </div>
                 <ul>
+                    @foreach($recentPosts as $recent)
                     <li class="recent-post">
-                        <div class="post-image"><a href="{{ route('blog.post') }}"><img src="{{ asset('assets/img/blog/sidebar/b-s-img.png') }}" alt="img title"></a></div>
-                        <div class="recent-post__info"><a href="{{ route('blog.post') }}">Five Fantastic Experience</a><span class="post-date">July 26, 2020</span></div>
+                        <div class="post-image">
+                            <a href="{{ route('blog.post', $recent) }}">
+                                <img src="{{ asset($recent->image ?? 'assets/img/blog/jr-post-default.png') }}" alt="{{ $recent->title }}">
+                            </a>
+                        </div>
+                        <div class="recent-post__info">
+                            <a href="{{ route('blog.post', $recent) }}">{{ $recent->title }}</a>
+                            <span class="post-date">{{ $recent->created_at->format('F d, Y') }}</span>
+                        </div>
                     </li>
-                    <li class="recent-post">
-                        <div class="post-image"><a href="{{ route('blog.post') }}"><img src="{{ asset('assets/img/blog/sidebar/b-s-img.png') }}" alt="img title"></a></div>
-                        <div class="recent-post__info"><a href="{{ route('blog.post') }}">We Love Design</a><span class="post-date">July 26, 2020</span></div>
-                    </li>
-                    <li class="recent-post">
-                        <div class="post-image"><a href="{{ route('blog.post') }}"><img src="{{ asset('assets/img/blog/sidebar/b-s-img.png') }}" alt="img title"></a></div>
-                        <div class="recent-post__info"><a href="{{ route('blog.post') }}">You Should Experience</a><span class="post-date">July 26, 2020</span></div>
-                    </li>
+                    @endforeach
                 </ul>
             </aside>
             <aside class="widget_categories">
