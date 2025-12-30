@@ -1,0 +1,143 @@
+@extends('layouts.slider')
+
+@section('title', 'Home - Slider Parallax')
+
+@section('content')
+<div class="swiper-container swiper-full-parallax">
+    <div class="swiper-wrapper">
+        <!-- Slide -->
+        <div class="swiper-slide">
+            <div class="swiper-slide__inner">
+                <div class="slide-image"><img src="{{ asset('assets/img/slider/d-s.png') }}" alt="img title"></div>
+                <div class="slide-title-container">
+                    <div class="slide-info-left">
+                        <div class="slider-nav">
+                            <div class="swiper-button-prev">
+                                <svg version="1.1" viewBox="0 0 36 36" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polyline class="st0" points="11,18 16,13 21,18 "></polyline>
+                                    <path class="st0" d="M21,29H11c-4.4,0-8-3.6-8-8V11c0-4.4,3.6-8,8-8h10c4.4,0,8,3.6,8,8v10C29,25.4,25.4,29,21,29z"></path>
+                                </svg>
+                            </div>
+                            <div class="swiper-button-next">
+                                <svg version="1.1" viewBox="0 0 36 36" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polyline class="st0" points="21,14 16,19 11,14 "></polyline>
+                                    <path class="st0" d="M21,29H11c-4.4,0-8-3.6-8-8V11c0-4.4,3.6-8,8-8h10c4.4,0,8,3.6,8,8v10C29,25.4,25.4,29,21,29z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="slide-title">
+                            <div class="slide-cat">design</div>
+                            <h3>The Wizards <br/> of the Soul</h3>
+                            <a class="slide-link" rel="noreferrer" href="{{ route('portfolio.1') }}">View Project<span></span></a>
+                        </div>
+                    </div>
+                    <div class="ms-slide-count"><span>01</span>
+                        <span class="total-count">/ 04</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Slide-->
+        <div class="swiper-slide">
+            <div class="swiper-slide__inner">
+                <div class="slide-image"><img src="{{ asset('assets/img/slider/d-s.png') }}" alt="img title"></div>
+                <div class="slide-title-container">
+                    <div class="slide-info-left">
+                        <div class="slider-nav">
+                            <div class="swiper-button-prev">
+                                <svg version="1.1" viewBox="0 0 36 36" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polyline class="st0" points="11,18 16,13 21,18 "></polyline>
+                                    <path class="st0" d="M21,29H11c-4.4,0-8-3.6-8-8V11c0-4.4,3.6-8,8-8h10c4.4,0,8,3.6,8,8v10C29,25.4,25.4,29,21,29z"></path>
+                                </svg>
+                            </div>
+                            <div class="swiper-button-next">
+                                <svg version="1.1" viewBox="0 0 36 36" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polyline class="st0" points="21,14 16,19 11,14 "></polyline>
+                                    <path class="st0" d="M21,29H11c-4.4,0-8-3.6-8-8V11c0-4.4,3.6-8,8-8h10c4.4,0,8,3.6,8,8v10C29,25.4,25.4,29,21,29z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="slide-title">
+                            <div class="slide-cat">creative</div>
+                            <h3>All In Love <br/> With Water</h3>
+                            <a class="slide-link" rel="noreferrer" href="{{ route('portfolio.1') }}">View Project<span></span></a>
+                        </div>
+                    </div>
+                    <div class="ms-slide-count"><span>02</span>
+                        <span class="total-count">/ 04</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Slide-->
+        <div class="swiper-slide">
+            <div class="swiper-slide__inner">
+                <div class="slide-image"><img src="{{ asset('assets/img/slider/d-s.png') }}" alt="img title"></div>
+                <div class="slide-title-container">
+                    <div class="slide-info-left">
+                        <div class="slider-nav">
+                            <div class="swiper-button-prev">
+                                <svg version="1.1" viewBox="0 0 36 36" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polyline class="st0" points="11,18 16,13 21,18 "></polyline>
+                                    <path class="st0" d="M21,29H11c-4.4,0-8-3.6-8-8V11c0-4.4,3.6-8,8-8h10c4.4,0,8,3.6,8,8v10C29,25.4,25.4,29,21,29z"></path>
+                                </svg>
+                            </div>
+                            <div class="swiper-button-next">
+                                <svg version="1.1" viewBox="0 0 36 36" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polyline class="st0" points="21,14 16,19 11,14 "></polyline>
+                                    <path class="st0" d="M21,29H11c-4.4,0-8-3.6-8-8V11c0-4.4,3.6-8,8-8h10c4.4,0,8,3.6,8,8v10C29,25.4,25.4,29,21,29z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="slide-title">
+                            <div class="slide-cat">project</div>
+                            <h3>The Drive <br/> of your life</h3>
+                            <a class="slide-link" rel="noreferrer" href="{{ route('portfolio.1') }}">View Project<span></span></a>
+                        </div>
+                    </div>
+                    <div class="ms-slide-count"><span>03</span>
+                        <span class="total-count">/ 04</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Slide -->
+        <div class="swiper-slide">
+            <div class="swiper-slide__inner">
+                <div class="slide-image"><img src="{{ asset('assets/img/slider/d-s.png') }}" alt="img title"></div>
+                <div class="slide-title-container">
+                    <div class="slide-info-left">
+                        <div class="slider-nav">
+                            <div class="swiper-button-prev">
+                                <svg version="1.1" viewBox="0 0 36 36" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polyline class="st0" points="11,18 16,13 21,18 "></polyline>
+                                    <path class="st0" d="M21,29H11c-4.4,0-8-3.6-8-8V11c0-4.4,3.6-8,8-8h10c4.4,0,8,3.6,8,8v10C29,25.4,25.4,29,21,29z"></path>
+                                </svg>
+                            </div>
+                            <div class="swiper-button-next">
+                                <svg version="1.1" viewBox="0 0 36 36" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polyline class="st0" points="21,14 16,19 11,14 "></polyline>
+                                    <path class="st0" d="M21,29H11c-4.4,0-8-3.6-8-8V11c0-4.4,3.6-8,8-8h10c4.4,0,8,3.6,8,8v10C29,25.4,25.4,29,21,29z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="slide-title">
+                            <div class="slide-cat">photography</div>
+                            <h3>Create <br/> your world</h3>
+                            <a class="slide-link" rel="noreferrer" href="{{ route('portfolio.1') }}">View Project<span></span></a>
+                        </div>
+                    </div>
+                    <div class="ms-slide-count"><span>04</span>
+                        <span class="total-count">/ 04</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @include('partials.footer-slider')
+    <div class="scroll-sign"><span></span>
+        <div>Scroll</div>
+    </div>
+</div>
+<div class="scroll-lock"></div>
+@endsection
