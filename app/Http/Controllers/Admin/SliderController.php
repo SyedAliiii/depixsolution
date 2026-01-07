@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
+use App\Http\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 
 class SliderController extends Controller
 {
+    use FileUploadTrait;
+
     public function index()
     {
-        $sliders = Slider::ordered()->get();
+        $sliders = Slider::orderBy('order')->get();
         return view('admin.sliders.index', compact('sliders'));
     }
 
@@ -21,25 +24,15 @@ class SliderController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'subtitle' => 'nullable|max:255',
-            'category' => 'nullable|max:100',
-            'image' => 'required|image|max:2048',
-            'link' => 'nullable|max:255',
-            'button_text' => 'nullable|max:100',
-            'order' => 'nullable|integer',
-            'is_active' => 'boolean',
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('sliders', 'public');
-            $validated['image'] = 'storage/' . $path;
-        }
+        $data = $request->all();
+        $data['image'] = $this->uploadFile($request, 'image', 'sliders');
 
-        $validated['is_active'] = $request->boolean('is_active');
-        
-        Slider::create($validated);
+        Slider::create($data);
 
         return redirect()->route('admin.sliders.index')->with('success', 'Slider created successfully.');
     }
@@ -51,32 +44,28 @@ class SliderController extends Controller
 
     public function update(Request $request, Slider $slider)
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'subtitle' => 'nullable|max:255',
-            'category' => 'nullable|max:100',
-            'image' => 'nullable|image|max:2048',
-            'link' => 'nullable|max:255',
-            'button_text' => 'nullable|max:100',
-            'order' => 'nullable|integer',
-            'is_active' => 'boolean',
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        $data = $request->all();
+        
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('sliders', 'public');
-            $validated['image'] = 'storage/' . $path;
+            $this->deleteFile($slider->image);
+            $data['image'] = $this->uploadFile($request, 'image', 'sliders');
         }
 
-        $validated['is_active'] = $request->boolean('is_active');
-
-        $slider->update($validated);
+        $slider->update($data);
 
         return redirect()->route('admin.sliders.index')->with('success', 'Slider updated successfully.');
     }
 
     public function destroy(Slider $slider)
     {
+        $this->deleteFile($slider->image);
         $slider->delete();
+
         return redirect()->route('admin.sliders.index')->with('success', 'Slider deleted successfully.');
     }
 }

@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portfolio;
+use App\Http\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class PortfolioController extends Controller
 {
+    use FileUploadTrait;
+
     public function index()
     {
-        $portfolios = Portfolio::ordered()->get();
+        $portfolios = Portfolio::orderBy('order')->get();
         return view('admin.portfolios.index', compact('portfolios'));
     }
 
@@ -22,24 +25,17 @@ class PortfolioController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'category' => 'required|max:100',
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'category' => 'required',
             'image' => 'required|image|max:2048',
-            'description' => 'nullable',
-            'order' => 'nullable|integer',
-            'is_active' => 'boolean',
         ]);
 
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('portfolios', 'public');
-            $validated['image'] = 'storage/' . $path;
-        }
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+        $data['image'] = $this->uploadFile($request, 'image', 'portfolios');
 
-        $validated['slug'] = Str::slug($validated['title']);
-        $validated['is_active'] = $request->boolean('is_active');
-
-        Portfolio::create($validated);
+        Portfolio::create($data);
 
         return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio created successfully.');
     }
@@ -51,31 +47,28 @@ class PortfolioController extends Controller
 
     public function update(Request $request, Portfolio $portfolio)
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'category' => 'required|max:100',
-            'image' => 'nullable|image|max:2048',
-            'description' => 'nullable',
-            'order' => 'nullable|integer',
-            'is_active' => 'boolean',
+        $request->validate([
+            'title' => 'required|string|max:255',
         ]);
 
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('portfolios', 'public');
-            $validated['image'] = 'storage/' . $path;
+            $this->deleteFile($portfolio->image);
+            $data['image'] = $this->uploadFile($request, 'image', 'portfolios');
         }
 
-        $validated['slug'] = Str::slug($validated['title']);
-        $validated['is_active'] = $request->boolean('is_active');
-
-        $portfolio->update($validated);
+        $portfolio->update($data);
 
         return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio updated successfully.');
     }
 
     public function destroy(Portfolio $portfolio)
     {
+        $this->deleteFile($portfolio->image);
         $portfolio->delete();
+
         return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio deleted successfully.');
     }
 }

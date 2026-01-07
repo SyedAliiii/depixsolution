@@ -1,196 +1,175 @@
 @extends('layouts.app')
 
-@section('title', 'About')
+@section('title', 'About Us - Xpovio Digital Agency')
 
 @section('content')
-<!--Hero-->
-<div class="margin-top-xl"></div>
-<section class="hero hero--overlay-layer hero-default">
-    <div class="container">
-        <div class="hero__content text-left"><span>About</span>
-            <h1>lets get acquainted</h1>
-            <p>Globally e-enable an expanded array of bandwidth before process-centric deliverables.</p>
-        </div>
-    </div>
+<!-- ==== banner start ==== -->
+<section class="cmn-banner bg-img" data-background="{{ asset('assets/images/banner/cmn-banner-bg.png') }}">
+   <div class="container">
+      <div class="row gaper align-items-center">
+         <div class="col-12 col-lg-5 col-xl-7">
+            <div class="text-center text-lg-start">
+               <h2 class="title title-anim">About Us</h2>
+               <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                     <li class="breadcrumb-item">
+                        <a href="{{ route('home') }}">
+                           <i class="fa-solid fa-house"></i>
+                           Home
+                        </a>
+                     </li>
+                     <li class="breadcrumb-item active" aria-current="page">
+                        About Us
+                     </li>
+                  </ol>
+               </nav>
+            </div>
+         </div>
+         <div class="col-12 col-lg-7 col-xl-5">
+            <div class="text-center text-lg-start">
+               <p class="primary-text">We're an UK-based top-notch design agency committed to partnering
+                  with good companies and hiring the right people for the right roles.</p>
+            </div>
+         </div>
+      </div>
+   </div>
 </section>
-<div class="container">
-    <div class="ms-page ms-page--about text-component">
-        <div class="ms_services">
-            <h2 class="text-align-left">Services</h2>
-            <div class="row">
-                <!-- Service Item-->
-                <div class="grid-sizer col-sm-6 col-md-4 col-lg-4"></div>
-                <div class="grid-item col-sm-6 col-md-4 col-lg-4 pb-lg-5 pb-4">
-                    <div class="ms_services--heading"><img src="{{ asset('assets/img/services/jr-services-1.png') }}" alt="img title">
-                        <h4>Emerging technologies.</h4>
-                    </div>
-                    <p>Continually simplify corporate systems whereas leveraged models. Appropriately streamline long-term high-impact technologies without bricks-and-clicks web-readiness.</p>
-                </div>
-                <!-- Service Item-->
-                <div class="grid-sizer col-sm-6 col-md-4 col-lg-4"></div>
-                <div class="grid-item col-sm-6 col-md-4 col-lg-4 pb-lg-5 pb-4">
-                    <div class="ms_services--heading"><img src="{{ asset('assets/img/services/jr-services-2.png') }}" alt="img title">
-                        <h4>Experience &amp; interface design.</h4>
-                    </div>
-                    <p>Progressively customize granular value via user-centric architectures. Professionally impact client-centric vortals via process-centric experiences.</p>
-                </div>
-                <!-- Service Item-->
-                <div class="grid-sizer col-sm-6 col-md-4 col-lg-4"></div>
-                <div class="grid-item col-sm-6 col-md-4 col-lg-4 pb-lg-5 pb-4">
-                    <div class="ms_services--heading"><img src="{{ asset('assets/img/services/jr-services-3.png') }}" alt="img title">
-                        <h4>UX design.</h4>
-                    </div>
-                    <p>Enthusiastically expedite user friendly alignments rather than parallel initiatives. Interactively embrace extensible collaboration and idea-sharing for economically sound expertise.</p>
-                </div>
-                <!-- Service Item-->
-                <div class="grid-sizer col-sm-6 col-md-4 col-lg-4"></div>
-                <div class="grid-item col-sm-6 col-md-4 col-lg-4 pb-lg-5 pb-4">
-                    <div class="ms_services--heading"><img src="{{ asset('assets/img/services/jr-services-4.png') }}" alt="img title">
-                        <h4>Digital branding.</h4>
-                    </div>
-                    <p>Assertively parallel task intermandated technologies through customized sources. Conveniently aggregate web-enabled niche markets with market positioning collaboration and idea-sharing.</p>
-                </div>
-                <!-- Service Item-->
-                <div class="grid-sizer col-sm-6 col-md-4 col-lg-4"></div>
-                <div class="grid-item col-sm-6 col-md-4 col-lg-4 pb-lg-5 pb-4">
-                    <div class="ms_services--heading"><img src="{{ asset('assets/img/services/jr-services-5.png') }}" alt="img title">
-                        <h4>Creative development.</h4>
-                    </div>
-                    <p>Enthusiastically matrix distributed leadership skills for out-of-the-box outsourcing. Appropriately architect standardized value after compelling initiatives.</p>
-                </div>
-                <!-- Service Item-->
-                <div class="grid-sizer col-sm-6 col-md-4 col-lg-4"></div>
-                <div class="grid-item col-sm-6 col-md-4 col-lg-4 pb-lg-5 pb-4">
-                    <div class="ms_services--heading"><img src="{{ asset('assets/img/services/jr-services-6.png') }}" alt="img title">
-                        <h4>Marketing Strategy.</h4>
-                    </div>
-                    <p>Compellingly fabricate high-quality products rather than wireless scenarios. Globally seize integrated outsourcing with highly efficient e-services.</p>
-                </div>
-            </div>
-        </div>
-        <div class="ms_experience">
-            <h2 class="text-align-left">Experience</h2>
-            <!-- Experience Item-->
-            <div class="row">
-                <div class="grid-sizer col-sm-6 col-md-4 col-lg-4"></div>
-                <div class="grid-item col-sm-6 col-md-3 col-lg-3">
-                    <p class="company_name">Redline Marketing</p>
-                    <p class="year">2003 - 2008</p>
-                </div>
-                <div class="grid-item col-sm-6 col-md-9 col-lg-9">
-                    <div class="experience-text">
-                        <p>Progressively unleash economically sound architectures before magnetic alignments. Progressively predominate turnkey models with impactful convergence. Dynamically restore cost effective infrastructures rather than revolutionary bandwidth.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Experience Item-->
-            <div class="row">
-                <div class="grid-sizer col-sm-6 col-md-4 col-lg-4"></div>
-                <div class="grid-item col-sm-6 col-md-3 col-lg-3">
-                    <p class="company_name">Big Boss Company</p>
-                    <p class="year">2008 - 2010</p>
-                </div>
-                <div class="grid-item col-sm-6 col-md-9 col-lg-9">
-                    <div class="experience-text">
-                        <p>Progressively unleash economically sound architectures before magnetic alignments. Progressively predominate turnkey models with impactful convergence. Dynamically restore cost effective infrastructures rather than revolutionary bandwidth.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Experience Item-->
-            <div class="row">
-                <div class="grid-sizer col-sm-6 col-md-4 col-lg-4"></div>
-                <div class="grid-item col-sm-6 col-md-3 col-lg-3">
-                    <p class="company_name">Happy Chappy</p>
-                    <p class="year">2010 - 2015</p>
-                </div>
-                <div class="grid-item col-sm-6 col-md-9 col-lg-9">
-                    <div class="experience-text">
-                        <p>Progressively unleash economically sound architectures before magnetic alignments. Progressively predominate turnkey models with impactful convergence. Dynamically restore cost effective infrastructures rather than revolutionary bandwidth.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Experience Item-->
-            <div class="row">
-                <div class="grid-sizer col-sm-6 col-md-4 col-lg-4"></div>
-                <div class="grid-item col-sm-6 col-md-3 col-lg-3">
-                    <p class="company_name">Flame on Publishing</p>
-                    <p class="year">2015 - 2020</p>
-                </div>
-                <div class="grid-item col-sm-6 col-md-9 col-lg-9">
-                    <div class="experience-text">
-                        <p>Progressively unleash economically sound architectures before magnetic alignments. Progressively predominate turnkey models with impactful convergence. Dynamically restore cost effective infrastructures rather than revolutionary bandwidth.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ms_our-team">
-            <h2 class="text-align-left">Our Team</h2>
-            <div class="row">
-                <div class="grid-sizer col-sm-6 col-md-3 colg-4"></div>
-                <!-- Team Item-->
-                <div class="grid-item col-xs-6 col-sm-6 col-md-3 co-lg-4 pb-lg-5 pb-4"><img src="{{ asset('assets/img/team/jr-team.png') }}" alt="John Wolf">
-                    <h4>John Wolf</h4>
-                    <p>CEO Director</p>
-                </div>
-                <!-- Team Item-->
-                <div class="grid-item col-xs-6 col-sm-6 col-md-3 co-lg-4 pb-lg-5 pb-4"><img src="{{ asset('assets/img/team/jr-team.png') }}" alt="Laura Nelson">
-                    <h4>Laura Nelson</h4>
-                    <p>Product Manager</p>
-                </div>
-                <!-- Team Item-->
-                <div class="grid-item col-xs-6 col-sm-6 col-md-3 co-lg-4 pb-lg-5 pb-4"><img src="{{ asset('assets/img/team/jr-team.png') }}" alt="Tommy Higher">
-                    <h4>Tommy Higher</h4>
-                    <p>Designer</p>
-                </div>
-                <!-- Team Item-->
-                <div class="grid-item col-xs-6 col-sm-6 col-md-3 co-lg-4 pb-lg-5 pb-4"><img src="{{ asset('assets/img/team/jr-team.png') }}" alt="Kristine Rhodes">
-                    <h4>Kristine Rhodes</h4>
-                    <p>Project Manager</p>
-                </div>
-                <!-- Team Item-->
-                <div class="grid-item col-xs-6 col-sm-6 col-md-3 co-lg-4 pb-lg-5 pb-4"><img src="{{ asset('assets/img/team/jr-team.png') }}" alt="Elisabeth Carly">
-                    <h4>Elisabeth Carly</h4>
-                    <p>Marketing Manager</p>
-                </div>
-                <!-- Team Item-->
-                <div class="grid-item col-xs-6 col-sm-6 col-md-3 co-lg-4 pb-lg-5 pb-4"><img src="{{ asset('assets/img/team/jr-team.png') }}" alt="Dustin Nolan">
-                    <h4>Dustin Nolan</h4>
-                    <p>Developer</p>
-                </div>
-                <!-- Team Item-->
-                <div class="grid-item col-xs-6 col-sm-6 col-md-3 co-lg-4 pb-lg-5 pb-4"><img src="{{ asset('assets/img/team/jr-team.png') }}" alt="Evelyn Wood">
-                    <h4>Evelyn Wood</h4>
-                    <p>Marketing Manager</p>
-                </div>
-                <!-- Team Item-->
-                <div class="grid-item col-xs-6 col-sm-6 col-md-3 co-lg-4 pb-lg-5 pb-4"><img src="{{ asset('assets/img/team/jr-team.png') }}" alt="Jimmy (Jim) Hansen">
-                    <h4>Jimmy (Jim) Hansen</h4>
-                    <p>Designer</p>
-                </div>
-            </div>
-        </div>
-        <div class="ms_clients-gallery">
-            <hr class="wp-block-separatoris-style-wide">
-            <div class="row justify-center">
-                <div class="grid-sizer col-sm-4 col-md-2 colg-3"></div>
-                <!-- Logo Client Item-->
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-1.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-2.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-3.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-4.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-5.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-14.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-7.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-8.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-9.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-10.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-11.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-12.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-13.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-6.png') }}" alt="img title"></div>
-                <div class="c_logo col-sm-4 col-md-2 colg-3"><img src="{{ asset('assets/img/clients/jr-client-15.png') }}" alt="img title"></div>
-            </div>
-        </div>
-    </div>
+<!-- ==== / banner end ==== -->
+<!-- ==== video modal start ==== -->
+<div class="video-modal">
+   <img src="{{ asset('assets/images/modal-bg.png') }}" alt="Image" class="modal-bg">
+   <a class="video-frame video-btn" href="https://www.youtube.com/watch?v=RvreULjnzFo" target="_blank">
+      <img src="{{ asset('assets/images/video-frame-two.png') }}" alt="Image">
+      <i class="fa-sharp fa-solid fa-play"></i>
+   </a>
 </div>
+<!-- ==== / video modal end ==== -->
+<!-- ==== agency start ==== -->
+<section class="section agency">
+   <div class="container">
+      <div class="row gaper align-items-center">
+         <div class="col-12 col-lg-6">
+            <div class="agency__thumb">
+               <img src="{{ asset('assets/images/agency/thumb-one.png') }}" alt="Image" class="thumb-one fade-left">
+               <img src="{{ asset('assets/images/agency/thumb-two.png') }}" alt="Image" class="thumb-two fade-right">
+            </div>
+         </div>
+         <div class="col-12 col-lg-6">
+            <div class="agency__content section__content">
+               <span class="sub-title">
+                  WELCOME
+                  <i class="fa-solid fa-arrow-right"></i>
+               </span>
+               <h2 class="title title-anim">
+                  We are digital creative
+                  agency in London
+               </h2>
+               <div class="paragraph">
+                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At
+                     the end of the day, going forward, a new normal that has evolved from generation on
+                     the runway heading towards a streamlined cloud solution going forward porttitor
+                     dictum sapien.</p>
+               </div>
+               <div class="skill-wrap">
+                   @foreach($skills as $skill)
+                   <div class="skill-bar-single">
+                      <div class="skill-bar-title">
+                         <p class="primary-text">{{ $skill->name }}</p>
+                      </div>
+                      <div class="skill-bar-wrapper" data-percent="{{ $skill->percent }}%">
+                         <div class="skill-bar">
+                            <div class="skill-bar-percent">
+                               <span class="percent-value"></span>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   @endforeach
+                </div>
+               <div class="section__content-cta">
+                  <a href="{{ route('about') }}" class="btn btn--primary">Know More</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <img src="{{ asset('assets/images/star.png') }}" alt="Image" class="star">
+   <img src="{{ asset('assets/images/agency/dot-large.png') }}" alt="Image" class="dot-large">
+</section>
+<!-- ==== / agency end ==== -->
+<!-- ==== team members start ==== -->
+<section class="section team-slider-s">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <div class="section__header--secondary">
+               <div class="row gaper align-items-center">
+                  <div class="col-12 col-lg-8">
+                     <div class="section__header text-center text-lg-start mb-0">
+                        <span class="sub-title">
+                           our awesome crew
+                           <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                        <h2 class="title title-anim">our xpovio team members</h2>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="team-r position-relative">
+      <div class="team-s__slider">
+          @foreach($teams as $team)
+          <div class="team-s__slider-single">
+             <div class="team-wrap">
+                <div class="thumb">
+                   <a href="#">
+                      <img src="{{ asset($team->image) }}" alt="Image">
+                   </a>
+                   <div class="thumb__content" data-background="{{ asset('assets/images/teams/bg.png') }}">
+                      <div class="info">
+                         <p>{{ $team->designation }}</p>
+                      </div>
+                      <h4>
+                         <a href="#">{{ $team->name }}</a>
+                      </h4>
+                      <div class="social-alt">
+                         @if(isset($team->social_links['facebook']))
+                         <a href="{{ $team->social_links['facebook'] }}" target="_blank">
+                            <i class="fa-brands fa-facebook-f"></i>
+                         </a>
+                         @endif
+                         @if(isset($team->social_links['twitter']))
+                         <a href="{{ $team->social_links['twitter'] }}" target="_blank">
+                            <i class="fa-brands fa-twitter"></i>
+                         </a>
+                         @endif
+                         @if(isset($team->social_links['linkedin']))
+                         <a href="{{ $team->social_links['linkedin'] }}" target="_blank">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                         </a>
+                         @endif
+                      </div>
+                   </div>
+                </div>
+                <div class="content">
+                   <div class="intro">
+                      <h5>
+                         <a href="#">{{ $team->name }}</a>
+                      </h5>
+                      <p>{{ $team->designation }}</p>
+                   </div>
+                   <hr>
+                   <div class="inner">
+                      <p>Full-service website design, development and digital marketing.</p>
+                   </div>
+                </div>
+             </div>
+          </div>
+          @endforeach
+      </div>
+   </div>
+</section>
+<!-- ==== / team members end ==== -->
 @endsection

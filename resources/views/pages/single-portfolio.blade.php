@@ -1,60 +1,84 @@
 @extends('layouts.app')
 
-@section('title', 'Single Portfolio')
+@section('title', $portfolio->title . ' - Xpovio Digital Agency')
 
 @section('content')
-<!--Hero-->
-<div class="margin-top-xl"></div>
-<section class="hero hero--overlay-layer hero-default">
-    <div class="container">
-        <div class="hero__content text-left"><span>Single Portfolio Page</span>
-            <h1>{{ $portfolio->title }}</h1>
-            <p>{{ $portfolio->description }}</p>
-        </div>
-    </div>
+<!-- ==== banner start ==== -->
+<section class="cmn-banner bg-img" data-background="{{ asset('assets/images/banner/cmn-banner-bg.png') }}">
+   <div class="container">
+      <div class="row gaper align-items-center">
+         <div class="col-12 col-lg-5 col-xl-7">
+            <div class="text-center text-lg-start">
+               <h2 class="title title-anim">{{ $portfolio->title }}</h2>
+               <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                     <li class="breadcrumb-item">
+                        <a href="{{ route('home') }}">
+                           <i class="fa-solid fa-house"></i>
+                           Home
+                        </a>
+                     </li>
+                     <li class="breadcrumb-item">
+                        <a href="{{ route('portfolio.index') }}">
+                           Projects
+                        </a>
+                     </li>
+                     <li class="breadcrumb-item active" aria-current="page">
+                        {{ $portfolio->title }}
+                     </li>
+                  </ol>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
 </section>
-<div class="container ms-content--portfolio">
-    <div class="row grid-content blockgallery">
-        @if($portfolio->gallery && count($portfolio->gallery) > 0)
-            @foreach($portfolio->gallery as $image)
-            <div class="grid-sizer col-xs-12 col-md-4 col-sm-3"></div>
-            <div class="grid-item col-xs-12 col-md-4 col-sm-3">
-                <a class="mfp-img has-img" href="{{ asset($image) }}">
-                    <img src="{{ asset($image) }}" alt="{{ $portfolio->title }}">
-                </a>
+<!-- ==== / banner end ==== -->
+<!-- ==== project details start ==== -->
+<section class="section project-d">
+   <div class="container">
+      <div class="row gaper">
+         <div class="col-12 col-lg-6">
+            <div class="project-d-group">
+               <h3 class="light-title-lg">{{ $portfolio->title }}</h3>
+               <p>
+                  {{ $portfolio->description }}
+               </p>
             </div>
-            @endforeach
-        @else
-            {{-- Fallback if no gallery, show main image multiple times for layout demo --}}
-            @for($i = 0; $i < 6; $i++)
-            <div class="grid-sizer col-xs-12 col-md-4 col-sm-3"></div>
-            <div class="grid-item col-xs-12 col-md-4 col-sm-3">
-                <a class="mfp-img has-img" href="{{ asset($portfolio->image) }}">
-                    <img src="{{ asset($portfolio->image) }}" alt="{{ $portfolio->title }}">
-                </a>
+         </div>
+         <div class="col-12 col-lg-6">
+            <div class="project-d-group">
+               <h3 class="light-title-lg">Project Info</h3>
+               <ul>
+                   @if($portfolio->client)
+                  <li>
+                     <strong>Client:</strong> {{ $portfolio->client }}
+                  </li>
+                  @endif
+                  <li>
+                      <strong>Category:</strong> {{ $portfolio->category }}
+                  </li>
+                  @if($portfolio->project_url)
+                  <li>
+                      <strong>Project Link:</strong> <a href="{{ $portfolio->project_url }}" target="_blank">Link</a>
+                  </li>
+                  @endif
+               </ul>
             </div>
-            @endfor
-        @endif
-    </div>
-    <div class="ms-next-case">
-        <div class="single-portfolio-nav">
-            <div class="s-p-next">
-                <a href="{{ route('portfolio.single', $nextPortfolio) }}">
-                    <img src="{{ asset($nextPortfolio->image) }}" alt="{{ $nextPortfolio->title }}">
-                    <div class="container"><span>Next</span>
-                        <h1>{{ $nextPortfolio->title }}</h1>
-                    </div>
-                </a>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-12">
+            <div class="poster__slider-wrapper">
+               <div class="poster__slider">
+                  <div class="poster__slider-single">
+                     <img src="{{ asset($portfolio->image) }}" alt="Image">
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
-    <div class="container ms-cta">
-        <div class="cta-section"><span class="line"></span>
-            <div class="cta-text">
-                <p>Ready to create something amazing?</p>
-                <h1>Lets Work Together</h1><a class="btn btn--primary" href="{{ route('contacts') }}">Get In Touch</a>
-            </div>
-        </div>
-    </div>
-</div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ==== / project details end ==== -->
 @endsection

@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Http\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    use FileUploadTrait;
+
     public function index()
     {
-        $posts = Post::latest('created_at')->get();
+        $posts = Post::latest()->get();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -22,30 +25,18 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'category' => 'nullable|max:100',
-            'image' => 'nullable|image|max:2048',
-            'excerpt' => 'nullable|max:500',
+        $request->validate([
+            'title' => 'required|string|max:255',
             'content' => 'required',
-            'author' => 'nullable|max:100',
-            'is_published' => 'boolean',
+            'image' => 'required|image|max:2048',
         ]);
 
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('posts', 'public');
-            $validated['image'] = 'storage/' . $path;
-        }
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+        $data['image'] = $this->uploadFile($request, 'image', 'posts');
+        $data['author'] = auth()->user()->name ?? 'Admin';
 
-        $validated['slug'] = Str::slug($validated['title']);
-        $validated['is_published'] = $request->boolean('is_published');
-        $validated['author'] = $validated['author'] ?? auth()->user()->name;
-        
-        if ($validated['is_published']) {
-            $validated['published_at'] = now();
-        }
-
-        Post::create($validated);
+        Post::create($data);
 
         return redirect()->route('admin.posts.index')->with('success', 'Post created successfully.');
     }
@@ -57,36 +48,29 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'category' => 'nullable|max:100',
-            'image' => 'nullable|image|max:2048',
-            'excerpt' => 'nullable|max:500',
+        $request->validate([
+            'title' => 'required|string|max:255',
             'content' => 'required',
-            'author' => 'nullable|max:100',
-            'is_published' => 'boolean',
         ]);
 
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('posts', 'public');
-            $validated['image'] = 'storage/' . $path;
+            $this->deleteFile($post->image);
+            $data['image'] = $this->uploadFile($request, 'image', 'posts');
         }
 
-        $validated['slug'] = Str::slug($validated['title']);
-        $validated['is_published'] = $request->boolean('is_published');
-        
-        if ($validated['is_published'] && !$post->published_at) {
-            $validated['published_at'] = now();
-        }
-
-        $post->update($validated);
+        $post->update($data);
 
         return redirect()->route('admin.posts.index')->with('success', 'Post updated successfully.');
     }
 
     public function destroy(Post $post)
     {
+        $this->deleteFile($post->image);
         $post->delete();
+
         return redirect()->route('admin.posts.index')->with('success', 'Post deleted successfully.');
     }
 }

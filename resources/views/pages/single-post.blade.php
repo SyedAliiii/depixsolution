@@ -1,80 +1,177 @@
 @extends('layouts.app')
 
-@section('title', 'Blog Post')
+@section('title', $post->title . ' - Xpovio Digital Agency')
 
 @section('content')
-<!--Hero-->
-<div class="margin-top-xl"></div>
-<section class="hero hero--overlay-layer hero-default">
-    <div class="container">
-        <div class="hero__content text-left"><span>Single Post</span>
-            <h1>{{ $post->title }}</h1>
-            <p>{{ $post->excerpt }}</p>
-        </div>
-    </div>
+<!-- ==== banner start ==== -->
+<section class="cmn-banner bg-img" data-background="{{ asset('assets/images/banner/cmn-banner-bg.png') }}">
+   <div class="container">
+      <div class="row gaper align-items-center">
+         <div class="col-12">
+            <div class="text-center text-lg-start">
+               <h2 class="title title-anim">{{ $post->title }}</h2>
+               <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                     <li class="breadcrumb-item">
+                        <a href="{{ route('home') }}">
+                           <i class="fa-solid fa-house"></i>
+                           Home
+                        </a>
+                     </li>
+                     <li class="breadcrumb-item">
+                        <a href="{{ route('blog.index') }}">
+                           Blog
+                        </a>
+                     </li>
+                     <li class="breadcrumb-item active" aria-current="page">
+                        {{ Str::limit($post->title, 20) }}
+                     </li>
+                  </ol>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
 </section>
-<div class="container ms-content">
-    <div class="row justify-content-between">
-        <div class="row blog-sidebar grid-content col-lg-8">
-            <article class="single-post col-12">
-                <figure class="post-thumbnail media-wrapper media-wrapper--16:9">
-                    <img src="{{ asset($post->image ?? 'assets/img/blog/jr-post-default.png') }}" alt="{{ $post->title }}">
-                </figure>
-                <div class="post-content text-component">
-                    <div class="post-meta-default">
-                        <span class="post__date">{{ $post->created_at->format('F d, Y') }}</span>
-                        <span role="separator"></span>
-                        <span class="post__category link"><a href="#">{{ $post->category }}</a></span>
-                    </div>
-                    {!! $post->content !!}
-                </div>
-                <div class="post-tags">
-                    <span>Category:</span>
-                    <a href="#">{{ $post->category }}</a>
-                </div>
-                <div class="post-share">
-                    <span>Share:</span>
-                    <ul class="socials">
-                        <li class="ms-btn"><a class="socicon-twitter" title="Twitter" target="_blank" href="http://twitter.com/"></a></li>
-                        <li class="ms-btn"><a class="socicon-facebook" title="Facebook" target="_blank" href="https://www.facebook.com/"></a></li>
-                        <li class="ms-btn"><a class="socicon-linkedin" title="LinkedIn" target="_blank" href="https://www.linkedin.com/"></a></li>
-                    </ul>
-                </div>
-            </article>
-        </div>
-        <div class="ms-sidebar pl-lg-5 col-lg-4">
-            <aside class="jr_widget_recent_posts">
-                <div class="text-divider">
-                    <h5>Recent Posts</h5>
-                </div>
-                <ul>
-                    @foreach($recentPosts as $recent)
-                    <li class="recent-post">
-                        <div class="post-image">
-                            <a href="{{ route('blog.post', $recent) }}">
-                                <img src="{{ asset($recent->image ?? 'assets/img/blog/jr-post-default.png') }}" alt="{{ $recent->title }}">
-                            </a>
+<!-- ==== / banner end ==== -->
+<!-- ==== blog details start ==== -->
+<section class="section blog-main blog-details fade-wrapper">
+   <div class="container">
+      <div class="row gaper">
+         <div class="col-12 col-xl-8">
+            <div class="blog-details__content">
+               <div class="bd-thumb fade-top">
+                  <img src="{{ asset($post->image) }}" alt="Image">
+               </div>
+               <div class="bd-content">
+                  <div class="bd-meta">
+                     <div class="meta__left">
+                        <p>
+                           <strong>Written by :</strong>
+                           Admin
+                        </p>
+                        <span></span>
+                        <p>{{ $post->created_at->format('d/m/Y') }}</p>
+                     </div>
+                  </div>
+                  <div class="bd-content-info">
+                     <h4 class="h4">
+                        {{ $post->title }}
+                     </h4>
+                     <div class="paragraph">
+                        {!! $post->content !!}
+                     </div>
+                  </div>
+               </div>
+               <div class="bd-tags">
+                  <div class="tags-left">
+                     <p>Tags:</p>
+                     <div class="tags-content">
+                        <a href="#">Nature</a>
+                        <a href="#">Health</a>
+                     </div>
+                  </div>
+                  <div class="tags-right">
+                     <p>Share:</p>
+                     <ul class="social">
+                        <li>
+                           <a href="#" aria-label="social media">
+                              <i class="fa-brands fa-facebook-f"></i>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#" aria-label="social media">
+                              <i class="fa-brands fa-twitter"></i>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="blog-details__pagination">
+               <div class="row gaper">
+                  <div class="col-md-6">
+                     <div class="single">
+                        <a href="{{ route('blog.index') }}">
+                           <i class="fa-solid fa-arrow-left-long"></i>
+                           Back to Blog
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <div class="section pb-0 comment-form fade-top">
+                  <div class="section__header">
+                     <h2 class="h2 text-start">Leave a comment</h2>
+                  </div>
+                  <form action="#" method="post">
+                     <div class="form-group-wrapper">
+                        <div class="form-group-single">
+                           <input type="text" name="comment-name" id="commentName" placeholder="Name">
                         </div>
-                        <div class="recent-post__info">
-                            <a href="{{ route('blog.post', $recent) }}">{{ $recent->title }}</a>
-                            <span class="post-date">{{ $recent->created_at->format('F d, Y') }}</span>
+                        <div class="form-group-single">
+                           <input type="email" name="comment-email" id="commentemail"
+                              placeholder="Email">
                         </div>
-                    </li>
-                    @endforeach
-                </ul>
-            </aside>
-            <aside class="widget_categories">
-                <div class="text-divider">
-                    <h5>Categories</h5>
-                </div>
-                <ul>
-                    <li class="cat-item"><a href="#">Creativity </a><span>(2)</span></li>
-                    <li class="cat-item"><a href="#">Design </a><span>(6)</span></li>
-                    <li class="cat-item"><a href="#">Story </a><span>(4)</span></li>
-                    <li class="cat-item"><a href="#">Travel </a><span>(11)</span></li>
-                </ul>
-            </aside>
-        </div>
-    </div>
-</div>
+                     </div>
+                     <div class="form-group-single">
+                        <textarea name="comment-message" id="commentMessage"
+                           placeholder="Write Comment..."></textarea>
+                     </div>
+                     <div class="cta__group">
+                        <button type="submit" class="btn btn--ocotonary">
+                           post comment
+                           <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div class="col-12 col-xl-4">
+            <div class="blog-main__sidebar">
+               <div class="widget ">
+                  <div class="widget__head">
+                     <h5 class="h5">Search</h5>
+                  </div>
+                  <div class="widget-search">
+                     <form action="#" method="post">
+                        <div class="form-group-input">
+                           <input type="search" name="blog-search" id="blogSearch"
+                              placeholder="Search here. . .">
+                           <button type="submit">
+                              <i class="fa-solid fa-magnifying-glass"></i>
+                           </button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+               <div class="widget">
+                  <div class="widget__head">
+                     <h5 class="h5">Recent Posts</h5>
+                  </div>
+                  <div class="widget__latest">
+                     <div class="latest-single ">
+                        <div class="latest-thumb">
+                           <a href="#">
+                              <img src="{{ asset('assets/images/news/ten.png') }}" alt="Image">
+                           </a>
+                        </div>
+                        <div class="latest-content">
+                           <p>10/01/2023</p>
+                           <p>
+                              <a href="#">
+                                 Guide dog shortage: The blind peo ple who train
+                                 their own guide
+                              </a>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ==== / blog details end ==== -->
 @endsection

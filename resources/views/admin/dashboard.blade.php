@@ -3,100 +3,79 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="top-bar">
-    <h1>Dashboard</h1>
-    <span class="text-muted">Welcome back, {{ auth()->user()->name }}!</span>
-</div>
+<div class="row">
+    <div class="col-md-12">
+        <p>Welcome to the Admin Panel. Use the sidebar to manage your website content.</p>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card bg-primary text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-uppercase mb-1">Services</h6>
+                        <h2 class="mb-0">{{ \App\Models\Service::count() }}</h2>
+                    </div>
+                    <i class="fa-solid fa-briefcase fa-2x opacity-50"></i>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between small">
+                <a class="text-white stretched-link" href="{{ route('admin.services.index') }}">View Details</a>
+                <div class="text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card bg-success text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-uppercase mb-1">Projects</h6>
+                        <h2 class="mb-0">{{ \App\Models\Portfolio::count() }}</h2>
+                    </div>
+                    <i class="fa-solid fa-layer-group fa-2x opacity-50"></i>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between small">
+                <a class="text-white stretched-link" href="{{ route('admin.portfolios.index') }}">View Details</a>
+                <div class="text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card bg-info text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-uppercase mb-1">Posts</h6>
+                        <h2 class="mb-0">{{ \App\Models\Post::count() }}</h2>
+                    </div>
+                    <i class="fa-solid fa-newspaper fa-2x opacity-50"></i>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between small">
+                <a class="text-white stretched-link" href="{{ route('admin.posts.index') }}">View Details</a>
+                <div class="text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
 
-<div class="row g-4 mb-4">
-    <div class="col-md-3">
-        <div class="card stat-card">
-            <div class="stat-value text-primary">{{ $stats['sliders'] }}</div>
-            <div class="stat-label">Sliders</div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card stat-card">
-            <div class="stat-value text-success">{{ $stats['portfolios'] }}</div>
-            <div class="stat-label">Portfolio Items</div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card stat-card">
-            <div class="stat-value text-info">{{ $stats['posts'] }}</div>
-            <div class="stat-label">Blog Posts</div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card stat-card">
-            <div class="stat-value text-warning">{{ $stats['published_posts'] }}</div>
-            <div class="stat-label">Published Posts</div>
-        </div>
-    </div>
-</div>
-
-<div class="row g-4">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <span>Recent Portfolios</span>
-                <a href="{{ route('admin.portfolios.create') }}" class="btn btn-sm btn-primary">Add New</a>
+    <div class="col-md-3 mb-4">
+        <div class="card bg-warning text-dark h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-uppercase mb-1">Messages</h6>
+                        <h2 class="mb-0">0</h2> {{-- Placeholder for messages --}}
+                    </div>
+                    <i class="fa-solid fa-envelope fa-2x opacity-50"></i>
+                </div>
             </div>
-            <div class="card-body p-0">
-                <table class="table table-hover mb-0">
-                    <tbody>
-                        @forelse($recentPortfolios as $portfolio)
-                        <tr>
-                            <td style="width: 60px;">
-                                <img src="{{ asset($portfolio->image) }}" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 0.5rem;">
-                            </td>
-                            <td>
-                                <strong>{{ $portfolio->title }}</strong>
-                                <div class="text-muted small">{{ $portfolio->category }}</div>
-                            </td>
-                            <td class="text-end">
-                                <a href="{{ route('admin.portfolios.edit', $portfolio) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr><td class="text-center text-muted py-4">No portfolios yet</td></tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <span>Recent Posts</span>
-                <a href="{{ route('admin.posts.create') }}" class="btn btn-sm btn-primary">Add New</a>
-            </div>
-            <div class="card-body p-0">
-                <table class="table table-hover mb-0">
-                    <tbody>
-                        @forelse($recentPosts as $post)
-                        <tr>
-                            <td>
-                                <strong>{{ $post->title }}</strong>
-                                <div class="text-muted small">{{ $post->created_at->format('M d, Y') }}</div>
-                            </td>
-                            <td class="text-end">
-                                @if($post->is_published)
-                                    <span class="badge bg-success">Published</span>
-                                @else
-                                    <span class="badge bg-secondary">Draft</span>
-                                @endif
-                            </td>
-                            <td class="text-end">
-                                <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr><td class="text-center text-muted py-4">No posts yet</td></tr>
-                        @endforelse
-                    </tbody>
-                </table>
+            <div class="card-footer d-flex align-items-center justify-content-between small">
+                <a class="text-dark stretched-link" href="#">View Details</a>
+                <div class="text-dark"><i class="fas fa-angle-right"></i></div>
             </div>
         </div>
     </div>

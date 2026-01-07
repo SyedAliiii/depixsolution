@@ -4,26 +4,46 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Http\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
+    use FileUploadTrait;
+
     public function index()
     {
-        $settings = Setting::all()->groupBy('group');
+        // Fetch all settings as key-value pairs
+        $settings = Setting::all()->pluck('value', 'key');
         return view('admin.settings.index', compact('settings'));
     }
 
     public function update(Request $request)
     {
-        foreach ($request->settings as $key => $value) {
-            if ($request->hasFile("settings.{$key}")) {
-                $path = $request->file("settings.{$key}")->store('settings', 'public');
-                $value = 'storage/' . $path;
+        $data = $request->except(['_token', '_method']);
+
+        foreach ($data as $key => $value) {
+            $setting = Setting::where('key', $key)->first();
+            
+            if ($request->hasFile($key)) {
+                // If it's a file, upload it
+                if ($setting) {
+                    $this->deleteFile($setting->value);
+                }
+                $value = $this->uploadFile($request, $key, 'settings');
             }
-            Setting::set($key, $value);
+
+            if ($setting) {
+                $setting->update(['value' => $value]);
+            } else {
+                Setting::create([
+                   'key' => $key,
+                   'value' => $value,
+                   'type' => $request->hasFile($key) ? 'image' : 'text'
+                ]);
+            }
         }
 
-        return redirect()->route('admin.settings.index')->with('success', 'Settings updated successfully.');
+        return redirect()->back()->with('success', 'Settings updated successfully.');
     }
 }

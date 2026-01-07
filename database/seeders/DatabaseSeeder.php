@@ -15,31 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Create Admin User
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('password'),
-            'is_admin' => true,
+        $this->call([
+            AdminSeeder::class,
+            SettingSeeder::class,
         ]);
 
-        // Site Settings
-        $settings = [
-            ['key' => 'site_name', 'value' => 'Depix Solution', 'type' => 'text', 'group' => 'general'],
-            ['key' => 'site_logo', 'value' => 'assets/img/logo_d.svg', 'type' => 'image', 'group' => 'general'],
-            ['key' => 'site_logo_light', 'value' => 'assets/img/logo_w.svg', 'type' => 'image', 'group' => 'general'],
-            ['key' => 'copyright', 'value' => 'Copyright © ' . date('Y') . '. Depix Solution', 'type' => 'text', 'group' => 'general'],
-            ['key' => 'contact_address', 'value' => "88 Whitby Road\nIP20 6JA\nLondon, UK", 'type' => 'textarea', 'group' => 'contact'],
-            ['key' => 'contact_email', 'value' => 'hello@depixsolution.com', 'type' => 'text', 'group' => 'contact'],
-            ['key' => 'contact_phone', 'value' => '+44 7356 6487', 'type' => 'text', 'group' => 'contact'],
-            ['key' => 'social_twitter', 'value' => 'http://twitter.com/', 'type' => 'text', 'group' => 'social'],
-            ['key' => 'social_facebook', 'value' => 'https://www.facebook.com/', 'type' => 'text', 'group' => 'social'],
-            ['key' => 'social_instagram', 'value' => 'https://www.instagram.com/', 'type' => 'text', 'group' => 'social'],
-            ['key' => 'social_dribbble', 'value' => 'http://dribbble.com/', 'type' => 'text', 'group' => 'social'],
-        ];
 
-        foreach ($settings as $setting) {
-            Setting::create($setting);
-        }
 
         // Sample Sliders
         $sliders = [
