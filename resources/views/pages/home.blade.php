@@ -38,7 +38,7 @@
           </div>
        </div>
     </div>
-    <img src="{{ isset($settings['home_banner_thumb']) ? asset($settings['home_banner_thumb']) : asset('assets/images/banner/banner-one-thumb.png') }}" alt="Image"
+    <img src="{{ asset($settings['home_banner_thumb']) ?? '' }}" alt="Image"
        class="banner-one-thumb d-none d-sm-block g-ban-one">
     <img src="{{ asset('assets/images/star.png') }}" alt="Image" class="star">
     <div class="banner-left-text banner-social-text d-none d-md-flex">
