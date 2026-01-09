@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - Xpovio Digital Agency')
+@section('title', 'About Us - DepixStudio Digital Agency')
 
 @section('content')
 <!-- ==== banner start ==== -->
@@ -110,7 +110,7 @@
                            our awesome crew
                            <i class="fa-solid fa-arrow-right"></i>
                         </span>
-                        <h2 class="title title-anim">our xpovio team members</h2>
+                        <h2 class="title title-anim">our depixstudio team members</h2>
                      </div>
                   </div>
                </div>

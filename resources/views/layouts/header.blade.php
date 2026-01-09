@@ -31,7 +31,7 @@
           <div class="offcanvas-menu__header nav-fade">
              <div class="logo">
                 <a href="{{ route('home') }}">
-                   <img src="{{ asset('assets/images/logo.png') }}" alt="" title="">
+                   <img src="{{ asset('assets/images/logo.png') }}" alt="DepixStudio" title="DepixStudio">
                 </a>
              </div>
              <a href="javascript:void(0)" aria-label="close offcanvas menu" class="close-offcanvas-menu">

@@ -17,7 +17,7 @@
                    </a>
                    <a href="mailto:{{ $settings['contact_email'] ?? '' }}">
                       <i class="fa-sharp fa-solid fa-envelope"></i>
-                      {{ $settings['contact_email'] ?? 'info@xpovio.com' }}
+                      {{ $settings['contact_email'] ?? 'info@depixstudio.com' }}
                    </a>
                 </div>
                 <div class="footer__cta text-start">
@@ -83,8 +83,7 @@
                          <p>
                             Copyright &copy;
                             <span id="copyYear"></span>
-                            Xpovio by
-                            <a href="#" target="_blank">GranTheme</a>
+                            DepixStudio
                             . All Rights Reserved
                          </p>
                       </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $portfolio->title . ' - Xpovio Digital Agency')
+@section('title', $portfolio->title . ' - DepixStudio Digital Agency')
 
 @section('content')
 <!-- ==== banner start ==== -->

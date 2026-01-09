@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us - Xpovio Digital Agency')
+@section('title', 'Contact Us - DepixStudio Digital Agency')
 
 @section('content')
 <!-- ==== banner start ==== -->
@@ -54,7 +54,7 @@
                <div class="content">
                   <h4>Mail Address</h4>
                   <p>
-                     <a href="mailto:{{ $settings['contact_email'] ?? '' }}">{{ $settings['contact_email'] ?? 'info@xpovio.com' }}</a>
+                     <a href="mailto:{{ $settings['contact_email'] ?? '' }}">{{ $settings['contact_email'] ?? 'info@depixstudio.com' }}</a>
                   </p>
                </div>
             </div>

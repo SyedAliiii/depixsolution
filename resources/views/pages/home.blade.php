@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home - Xpovio Digital Agency')
+@section('title', 'Home - DepixStudio Digital Agency')
 
 @section('content')
 <!-- ==== banner start ==== -->
@@ -42,7 +42,7 @@
        class="banner-one-thumb d-none d-sm-block g-ban-one">
     <img src="{{ asset('assets/images/star.png') }}" alt="Image" class="star">
     <div class="banner-left-text banner-social-text d-none d-md-flex">
-       <a href="mailto:{{ $settings['contact_email'] ?? 'info@xpovio.com' }}">mail : {{ $settings['contact_email'] ?? 'info@xpovio.com' }}</a>
+       <a href="mailto:{{ $settings['contact_email'] ?? 'info@depixstudio.com' }}">mail : {{ $settings['contact_email'] ?? 'info@depixstudio.com' }}</a>
        <a href="tel:{{ $settings['contact_phone'] ?? '' }}">Call : {{ $settings['contact_phone'] ?? '' }}</a>
     </div>
     <div class="banner-right-text banner-social-text d-none d-md-flex">

@@ -22,4 +22,8 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./
           server-dir: ./
-          dangerous-clean-slate: true
+          exclude: |
+            **/.env
+            **/vendor/**
+            **/.git/**
+            **/node_modules/**

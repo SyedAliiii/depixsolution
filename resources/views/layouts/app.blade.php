@@ -12,7 +12,7 @@
    <!-- #favicon -->
    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
    <!-- #title -->
-   <title>@yield('title', 'Xpovio - Digital Agency Creative Portfolio Template')</title>
+   <title>@yield('title', 'DepixStudio - Digital Agency Creative Portfolio Template')</title>
    <!-- #keywords -->
    <meta name="keywords" content="creative, agency, portfolio">
    <!-- #description -->
