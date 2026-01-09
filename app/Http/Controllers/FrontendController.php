@@ -12,20 +12,22 @@ use App\Models\Portfolio;
 use App\Models\Faq;
 use App\Models\Skill;
 use App\Models\Sponsor;
+use App\Models\Setting;
 
 class FrontendController extends Controller
 {
     public function home()
     {
+        $settings = Setting::all()->pluck('value', 'key')->toArray();
         $sliders = Slider::active()->ordered()->get();
-        $services = Service::active()->ordered()->take(6)->get(); // Example limit
+        $services = Service::active()->ordered()->take(6)->get();
         $portfolios = Portfolio::active()->ordered()->take(6)->get();
         $testimonials = Testimonial::active()->get();
         $posts = Post::published()->latest()->take(3)->get();
         $skills = Skill::active()->ordered()->get();
         $sponsors = Sponsor::active()->ordered()->get();
         
-        return view('pages.home', compact('sliders', 'services', 'portfolios', 'testimonials', 'posts', 'skills', 'sponsors'));
+        return view('pages.home', compact('sliders', 'services', 'portfolios', 'testimonials', 'posts', 'skills', 'sponsors', 'settings'));
     }
 
     public function about()
