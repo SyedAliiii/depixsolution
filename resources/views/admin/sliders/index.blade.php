@@ -17,6 +17,7 @@
                 <th style="width: 100px;">Image</th>
                 <th>Title</th>
                 <th>Subtitle</th>
+                <th>Description</th>
                 <th style="width: 80px;">Order</th>
                 <th style="width: 150px;">Actions</th>
             </tr>
@@ -30,6 +31,7 @@
                 </td>
                 <td>{{ $slider->title }}</td>
                 <td>{{ $slider->subtitle }}</td>
+                <td>{{ Str::limit($slider->description, 50) }}</td>
                 <td>{{ $slider->order }}</td>
                 <td>
                     <a href="{{ route('admin.sliders.edit', $slider->id) }}" class="btn btn-sm btn-info text-white">
