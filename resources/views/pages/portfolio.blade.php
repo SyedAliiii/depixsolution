@@ -39,8 +39,12 @@
 <section class="section portfolio-m fade-wrapper">
    <div class="container">
       <div class="row gaper">
-         @foreach($portfolios as $portfolio)
-         <div class="col-12 col-lg-6 col-xxl-4">
+         @foreach($portfolios as $index => $portfolio)
+            @php
+                $patternIndex = $index % 6;
+                $colClass = ($patternIndex == 0 || $patternIndex == 1) ? 'col-12 col-lg-6' : 'col-12 col-lg-6 col-xxl-3';
+            @endphp
+         <div class="{{ $colClass }}">
             <div class="portfolio-m__single topy-tilt fade-top">
                <div class="thumb">
                   <a href="{{ route('portfolio.show', $portfolio->slug) }}">

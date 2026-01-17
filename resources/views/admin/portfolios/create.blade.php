@@ -19,6 +19,42 @@
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="4">{{ old('description') }}</textarea>
             </div>
+
+             <div class="mb-3">
+                <label class="form-label">Portfolio Details (Multiple Image & Text)</label>
+                <div id="details-container">
+                    <!-- Repeater Interface -->
+                </div>
+                <button type="button" class="btn btn-secondary mt-2" onclick="addDetail()">+ Add Detail Block</button>
+            </div>
+
+            <script>
+                let detailIndex = 0;
+                function addDetail() {
+                    const container = document.getElementById('details-container');
+                    const html = `
+                        <div class="card mb-3 p-3 detail-block" id="detail-${detailIndex}">
+                            <div class="d-flex justify-content-between">
+                                <h5>Detail Block ${detailIndex + 1}</h5>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="removeDetail(${detailIndex})">Remove</button>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Image</label>
+                                <input type="file" class="form-control" name="details[${detailIndex}][image]" accept="image/*">
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Text</label>
+                                <textarea class="form-control" name="details[${detailIndex}][text]" rows="3"></textarea>
+                            </div>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', html);
+                    detailIndex++;
+                }
+                function removeDetail(index) {
+                     document.getElementById(`detail-${index}`).remove();
+                }
+            </script>
         </div>
         <div class="col-md-4">
             <div class="mb-3">

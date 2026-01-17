@@ -20,6 +20,63 @@
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="4">{{ old('description', $portfolio->description) }}</textarea>
             </div>
+
+            <div class="mb-3">
+                <label class="form-label">Portfolio Details (Multiple Image & Text)</label>
+                <div id="details-container">
+                    @foreach($portfolio->details as $index => $detail)
+                        <div class="card mb-3 p-3 detail-block" id="detail-{{ $index }}">
+                            <div class="d-flex justify-content-between">
+                                <h5>Detail Block {{ $index + 1 }}</h5>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="removeDetail({{ $index }})">Remove</button>
+                            </div>
+                            <input type="hidden" name="details[{{ $index }}][id]" value="{{ $detail->id }}">
+                            <div class="mb-2">
+                                <label class="form-label">Image</label>
+                                <input type="file" class="form-control" name="details[{{ $index }}][image]" accept="image/*">
+                                @if($detail->image_path)
+                                    <div class="mt-2">
+                                        <img src="{{ asset($detail->image_path) }}" alt="Detail Image" class="img-fluid rounded" style="max-height: 100px;">
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Text</label>
+                                <textarea class="form-control" name="details[{{ $index }}][text]" rows="3">{{ $detail->text }}</textarea>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <button type="button" class="btn btn-secondary mt-2" onclick="addDetail()">+ Add Detail Block</button>
+            </div>
+
+             <script>
+                let detailIndex = {{ $portfolio->details->count() }};
+                function addDetail() {
+                    const container = document.getElementById('details-container');
+                    const html = `
+                        <div class="card mb-3 p-3 detail-block" id="detail-${detailIndex}">
+                            <div class="d-flex justify-content-between">
+                                <h5>Detail Block ${detailIndex + 1}</h5>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="removeDetail(${detailIndex})">Remove</button>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Image</label>
+                                <input type="file" class="form-control" name="details[${detailIndex}][image]" accept="image/*">
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Text</label>
+                                <textarea class="form-control" name="details[${detailIndex}][text]" rows="3"></textarea>
+                            </div>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', html);
+                    detailIndex++;
+                }
+                function removeDetail(index) {
+                     document.getElementById(`detail-${index}`).remove();
+                }
+            </script>
         </div>
         <div class="col-md-4">
             <div class="mb-3">

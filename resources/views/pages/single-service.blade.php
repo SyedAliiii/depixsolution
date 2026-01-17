@@ -54,24 +54,35 @@
                   </div>
                   @endif
                   <div class="details-group section__cta text-start">
-                     <h3 class="title-anim">{{ $service->title }}</h3>
+                     @if($service->details_title)
+                     <h3 class="title-anim">{{ $service->details_title }}</h3>
+                     @endif
+                     @if($service->details_description)
                      <p>
-                        {!! nl2br(e($service->description)) !!}
+                        {!! nl2br(e($service->details_description)) !!}
                      </p>
+                     @endif
                   </div>
                   <div class="section__content-cta">
                      <div class="row gaper">
                         <div class="col-12 col-lg-7">
                            <div class="details-group">
-                              <h3 class="title-anim">Key Features</h3>
-                              @if($service->features && is_array($service->features))
-                              <ul>
-                                 @foreach($service->features as $feature)
-                                    <li>{{ $feature }}</li>
-                                 @endforeach
-                              </ul>
+                              @if($service->approach_title)
+                              <h3 class="title-anim">{{ $service->approach_title }}</h3>
+                              @endif
+                              @if($service->approach_description)
+                              <p>
+                                 {!! nl2br(e($service->approach_description)) !!}
+                              </p>
                               @endif
                            </div>
+                        </div>
+                        <div class="col-12 col-lg-5">
+                           @if($service->approach_image)
+                           <div class="poster-small">
+                              <img src="{{ asset($service->approach_image) }}" alt="Image">
+                           </div>
+                           @endif
                         </div>
                      </div>
                   </div>
@@ -99,18 +110,19 @@
       <div class="row">
          <div class="col-12">
             <div class="service-f-wrapper">
+               @foreach($service->processes as $process)
                <div class="service-f-single fade-top">
                   <div class="single-item">
                      <div class="intro-btn">
-                        <h4>User Research</h4>
+                        <h4>{{ $process->title }}</h4>
                      </div>
                   </div>
                   <div class="single-item p-single p-sm body-cn">
-                     <p>To deliver the best experience, we thoroughly research and evaluate your product
-                        and its users to create a strategic foundation for the brand.</p>
+                     <p>{{ $process->description }}</p>
                   </div>
                   <button class="toggle-service-f"></button>
                </div>
+               @endforeach
             </div>
          </div>
       </div>

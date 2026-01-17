@@ -140,9 +140,9 @@
                             <i class="fa-brands fa-facebook-f"></i>
                          </a>
                          @endif
-                         @if(isset($team->social_links['twitter']))
-                         <a href="{{ $team->social_links['twitter'] }}" target="_blank">
-                            <i class="fa-brands fa-twitter"></i>
+                         @if(isset($team->social_links['behance']))
+                         <a href="{{ $team->social_links['behance'] }}" target="_blank">
+                            <i class="fa-brands fa-behance"></i>
                          </a>
                          @endif
                          @if(isset($team->social_links['linkedin']))

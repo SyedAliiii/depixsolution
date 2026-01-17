@@ -98,8 +98,8 @@
              <a href="https://www.facebook.com/" target="_blank" aria-label="share us on facebook">
                 <i class="fa-brands fa-facebook-f"></i>
              </a>
-             <a href="https://www.twitter.com/" target="_blank" aria-label="share us on twitter">
-                <i class="fa-brands fa-twitter"></i>
+             <a href="https://www.behance.net/" target="_blank" aria-label="share us on behance">
+                <i class="fa-brands fa-behance"></i>
              </a>
              <a href="https://www.pinterest.com/" target="_blank" aria-label="share us on pinterest">
                 <i class="fa-brands fa-linkedin-in"></i>

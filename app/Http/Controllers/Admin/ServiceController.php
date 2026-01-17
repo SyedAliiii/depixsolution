@@ -29,6 +29,7 @@ class ServiceController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required',
             'image' => 'nullable|image|max:2048',
+            'approach_image' => 'nullable|image|max:2048',
         ]);
 
         $data = $request->all();
@@ -38,7 +39,28 @@ class ServiceController extends Controller
             $data['image'] = $this->uploadFile($request, 'image', 'services');
         }
 
-        Service::create($data);
+        if ($request->hasFile('approach_image')) {
+            $data['approach_image'] = $this->uploadFile($request, 'approach_image', 'services/approach');
+        }
+
+        if ($request->filled('features')) {
+            $data['features'] = array_map('trim', explode(',', $request->features));
+        }
+
+        $service = Service::create($data);
+
+        // Handle Processes
+        if ($request->has('processes')) {
+            foreach ($request->processes as $index => $process) {
+                if (!empty($process['title'])) {
+                    $service->processes()->create([
+                        'title' => $process['title'],
+                        'description' => $process['description'] ?? null,
+                        'order' => $index,
+                    ]);
+                }
+            }
+        }
 
         return redirect()->route('admin.services.index')->with('success', 'Service created successfully.');
     }
@@ -62,7 +84,46 @@ class ServiceController extends Controller
             $data['image'] = $this->uploadFile($request, 'image', 'services');
         }
 
+        if ($request->hasFile('approach_image')) {
+            $this->deleteFile($service->approach_image);
+            $data['approach_image'] = $this->uploadFile($request, 'approach_image', 'services/approach');
+        }
+
+        if ($request->filled('features')) {
+            $data['features'] = array_map('trim', explode(',', $request->features));
+        } else {
+             $data['features'] = null;
+        }
+
         $service->update($data);
+
+        // Handle Processes
+        $submittedIds = [];
+        if ($request->has('processes')) {
+            foreach ($request->processes as $index => $process) {
+                $processData = [
+                    'title' => $process['title'],
+                    'description' => $process['description'] ?? null,
+                    'order' => $index,
+                ];
+
+                if (isset($process['id'])) {
+                    $processModel = $service->processes()->find($process['id']);
+                    if ($processModel) {
+                        $processModel->update($processData);
+                        $submittedIds[] = $process['id'];
+                    }
+                } else {
+                    if (!empty($process['title'])) {
+                        $newProcess = $service->processes()->create($processData);
+                        $submittedIds[] = $newProcess->id;
+                    }
+                }
+            }
+        }
+
+        // Delete removed processes
+        $service->processes()->whereNotIn('id', $submittedIds)->delete();
 
         return redirect()->route('admin.services.index')->with('success', 'Service updated successfully.');
     }
@@ -70,6 +131,7 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $this->deleteFile($service->image);
+        $this->deleteFile($service->approach_image);
         $service->delete();
 
         return redirect()->route('admin.services.index')->with('success', 'Service deleted successfully.');

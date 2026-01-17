@@ -27,8 +27,7 @@
          </div>
          <div class="col-12 col-lg-7 col-xl-5">
             <div class="text-center text-lg-start">
-               <p class="primary-text">We're an UK-based top-notch design agency committed to partnering
-                  with good companies and hiring the right people for the right roles.</p>
+               <p class="primary-text">{{ $settings['services_page_description'] ?? "We're an UK-based top-notch design agency committed to partnering with good companies and hiring the right people for the right roles." }}</p>
             </div>
          </div>
       </div>
@@ -85,8 +84,8 @@
 <!-- ==== / service table end ==== -->
 <!-- ==== video modal start ==== -->
 <div class="video-modal">
-   <img src="{{ asset('assets/images/modal-bg.png') }}" alt="Image" class="modal-bg">
-   <a class="video-frame video-btn" href="https://www.youtube.com/watch?v=RvreULjnzFo" target="_blank">
+   <img src="{{ isset($settings['services_video_bg']) ? asset($settings['services_video_bg']) : asset('assets/images/modal-bg.png') }}" alt="Image" class="modal-bg">
+   <a class="video-frame video-btn" href="{{ $settings['services_video_link'] ?? 'https://www.youtube.com/watch?v=RvreULjnzFo' }}" target="_blank">
       <img src="{{ asset('assets/images/video-frame-two.png') }}" alt="Image">
       <i class="fa-sharp fa-solid fa-play"></i>
    </a>
@@ -99,88 +98,72 @@
          <div class="col-12 col-lg-8">
             <div class="section__header text-center">
                <span class="sub-title">
-                  UX Process
+                  {{ $settings['services_process_subtitle'] ?? 'UX Process' }}
                   <i class="fa-solid fa-arrow-right"></i>
                </span>
-               <h2 class="title title-anim">working UX Process</h2>
+               <h2 class="title title-anim">{{ $settings['services_process_title'] ?? 'working UX Process' }}</h2>
             </div>
          </div>
       </div>
       <div class="row">
          <div class="col-12">
             <div class="service-f-wrapper">
-               <div class="service-f-single fade-top">
-                  <div class="single-item">
-                     <div class="intro-btn">
-                        <h4>User Research</h4>
+               @php
+                  $processSteps = isset($settings['services_process_steps']) ? json_decode($settings['services_process_steps'], true) : [];
+               @endphp
+               @if(count($processSteps) > 0)
+                  @foreach($processSteps as $step)
+                  <div class="service-f-single fade-top">
+                     <div class="single-item">
+                        <div class="intro-btn">
+                           <h4>{{ $step['title'] ?? '' }}</h4>
+                        </div>
                      </div>
-                  </div>
-                  <div class="single-item p-single p-sm body-cn">
-                     <p>To deliver the best experience, we thoroughly research and evaluate your product
-                        and its users to create a strategic foundation for the brand.</p>
-                  </div>
-                  <button class="toggle-service-f"></button>
-               </div>
-               <div class="service-f-single fade-top">
-                  <div class="single-item">
-                     <div class="intro-btn">
-                        <h4>story board</h4>
+                     <div class="single-item p-single p-sm body-cn">
+                        <p>{{ $step['description'] ?? '' }}</p>
                      </div>
+                     <button class="toggle-service-f"></button>
                   </div>
-                  <div class="single-item p-single p-sm body-cn">
-                     <p>To deliver the best experience, we thoroughly research and evaluate your product
-                        and its users to create a strategic foundation for the brand.</p>
-                  </div>
-                  <button class="toggle-service-f"></button>
-               </div>
-               <div class="service-f-single fade-top">
-                  <div class="single-item">
-                     <div class="intro-btn">
-                        <h4>wireframing</h4>
+                  @endforeach
+               @else
+                  {{-- Fallback static content --}}
+                  <div class="service-f-single fade-top">
+                     <div class="single-item">
+                        <div class="intro-btn">
+                           <h4>User Research</h4>
+                        </div>
                      </div>
-                  </div>
-                  <div class="single-item p-single p-sm body-cn">
-                     <p>To deliver the best experience, we thoroughly research and evaluate your product
-                        and its users to create a strategic foundation for the brand.</p>
-                  </div>
-                  <button class="toggle-service-f"></button>
-               </div>
-               <div class="service-f-single fade-top">
-                  <div class="single-item">
-                     <div class="intro-btn">
-                        <h4>Prototyping</h4>
+                     <div class="single-item p-single p-sm body-cn">
+                        <p>To deliver the best experience, we thoroughly research and evaluate your product
+                           and its users to create a strategic foundation for the brand.</p>
                      </div>
+                     <button class="toggle-service-f"></button>
                   </div>
-                  <div class="single-item p-single p-sm body-cn">
-                     <p>To deliver the best experience, we thoroughly research and evaluate your product
-                        and its users to create a strategic foundation for the brand.</p>
-                  </div>
-                  <button class="toggle-service-f"></button>
-               </div>
-               <div class="service-f-single fade-top">
-                  <div class="single-item">
-                     <div class="intro-btn">
-                        <h4>usability testing</h4>
+                  <div class="service-f-single fade-top">
+                     <div class="single-item">
+                        <div class="intro-btn">
+                           <h4>story board</h4>
+                        </div>
                      </div>
-                  </div>
-                  <div class="single-item p-single p-sm body-cn">
-                     <p>To deliver the best experience, we thoroughly research and evaluate your product
-                        and its users to create a strategic foundation for the brand.</p>
-                  </div>
-                  <button class="toggle-service-f"></button>
-               </div>
-               <div class="service-f-single fade-top">
-                  <div class="single-item">
-                     <div class="intro-btn">
-                        <h4>UI Design</h4>
+                     <div class="single-item p-single p-sm body-cn">
+                        <p>To deliver the best experience, we thoroughly research and evaluate your product
+                           and its users to create a strategic foundation for the brand.</p>
                      </div>
+                     <button class="toggle-service-f"></button>
                   </div>
-                  <div class="single-item p-single p-sm body-cn">
-                     <p>To deliver the best experience, we thoroughly research and evaluate your product
-                        and its users to create a strategic foundation for the brand.</p>
+                  <div class="service-f-single fade-top">
+                     <div class="single-item">
+                        <div class="intro-btn">
+                           <h4>wireframing</h4>
+                        </div>
+                     </div>
+                     <div class="single-item p-single p-sm body-cn">
+                        <p>To deliver the best experience, we thoroughly research and evaluate your product
+                           and its users to create a strategic foundation for the brand.</p>
+                     </div>
+                     <button class="toggle-service-f"></button>
                   </div>
-                  <button class="toggle-service-f"></button>
-               </div>
+               @endif
             </div>
          </div>
       </div>

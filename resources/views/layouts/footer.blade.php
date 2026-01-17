@@ -91,7 +91,7 @@
                    <div class="col-12 col-lg-4">
                       <div class="social justify-content-center justify-content-lg-end">
                          <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-                         <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                         <a href="#" target="_blank"><i class="fa-brands fa-behance"></i></a>
                          <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
                          <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                       </div>

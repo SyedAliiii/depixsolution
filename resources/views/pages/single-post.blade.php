@@ -81,7 +81,7 @@
                         </li>
                         <li>
                            <a href="#" aria-label="social media">
-                              <i class="fa-brands fa-twitter"></i>
+                              <i class="fa-brands fa-behance"></i>
                            </a>
                         </li>
                      </ul>

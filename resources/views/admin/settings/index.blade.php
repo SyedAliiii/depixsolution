@@ -58,6 +58,66 @@
         </div>
     </div>
 
+    <h5 class="mb-3 border-bottom pb-2">Services Page Content</h5>
+    <div class="row mb-4">
+        <div class="col-md-12 mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" name="services_page_description" rows="3">{{ $settings['services_page_description'] ?? '' }}</textarea>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Video Background Image</label>
+            <input type="file" class="form-control" name="services_video_bg">
+            @if(isset($settings['services_video_bg']))
+                <div class="mt-2">
+                    <img src="{{ asset($settings['services_video_bg']) }}" style="height: 100px;">
+                </div>
+            @endif
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Video Popup Link</label>
+            <input type="url" class="form-control" name="services_video_link" value="{{ $settings['services_video_link'] ?? '' }}">
+        </div>
+    </div>
+
+    <h6 class="text-muted">UX Process Section</h6>
+    <div class="row mb-4">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Section Title</label>
+            <input type="text" class="form-control" name="services_process_title" value="{{ $settings['services_process_title'] ?? 'working UX Process' }}">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Section Subtitle</label>
+            <input type="text" class="form-control" name="services_process_subtitle" value="{{ $settings['services_process_subtitle'] ?? 'UX Process' }}">
+        </div>
+        <div class="col-md-12">
+            <label class="form-label mb-2">Process Steps</label>
+            <div id="service-process-wrapper">
+                @php
+                    $processSteps = isset($settings['services_process_steps']) ? json_decode($settings['services_process_steps'], true) : [];
+                @endphp
+                @foreach($processSteps as $index => $step)
+                <div class="card mb-3 process-item" id="service-process-{{ $index }}">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6>Step {{ $index + 1 }}</h6>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="removeServiceProcess({{ $index }})">Remove</button>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Title</label>
+                            <input type="text" class="form-control" name="services_process_steps[{{ $index }}][title]" value="{{ $step['title'] ?? '' }}">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" name="services_process_steps[{{ $index }}][description]" rows="2">{{ $step['description'] ?? '' }}</textarea>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="addServiceProcess()">+ Add Process Step</button>
+        </div>
+    </div>
+
     <h6 class="text-muted">Agency Section</h6>
     <div class="row mb-4">
         <div class="col-md-6 mb-3">
@@ -94,6 +154,10 @@
             <label class="form-label">Offer Title</label>
             <input type="text" class="form-control" name="home_offer_title" value="{{ $settings['home_offer_title'] ?? 'Giving Your Business Some Great Ideas' }}">
         </div>
+        <div class="col-md-12 mb-3">
+            <label class="form-label">Offer Content</label>
+            <textarea class="form-control" name="home_offer_content" rows="4">{{ $settings['home_offer_content'] ?? '' }}</textarea>
+        </div>
     </div>
 
     <h5 class="mb-3 border-bottom pb-2">Social Media</h5>
@@ -103,8 +167,8 @@
             <input type="url" class="form-control" name="social_facebook" value="{{ $settings['social_facebook'] ?? '' }}">
         </div>
         <div class="col-md-6 mb-3">
-            <label class="form-label">Twitter URL</label>
-            <input type="url" class="form-control" name="social_twitter" value="{{ $settings['social_twitter'] ?? '' }}">
+            <label class="form-label">Behance URL</label>
+            <input type="url" class="form-control" name="social_behance" value="{{ $settings['social_behance'] ?? '' }}">
         </div>
         <div class="col-md-6 mb-3">
             <label class="form-label">Instagram URL</label>
@@ -123,3 +187,37 @@
     <button type="submit" class="btn btn-primary">Save Settings</button>
 </form>
 @endsection
+
+@push('scripts')
+<script>
+    let serviceProcessCount = {{ isset($settings['services_process_steps']) ? count(json_decode($settings['services_process_steps'], true)) : 0 }};
+
+    function addServiceProcess() {
+        const wrapper = document.getElementById('service-process-wrapper');
+        const html = `
+            <div class="card mb-3 process-item" id="service-process-${serviceProcessCount}">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h6>Step ${serviceProcessCount + 1}</h6>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="removeServiceProcess(${serviceProcessCount})">Remove</button>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-control" name="services_process_steps[${serviceProcessCount}][title]">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="services_process_steps[${serviceProcessCount}][description]" rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+        `;
+        wrapper.insertAdjacentHTML('beforeend', html);
+        serviceProcessCount++;
+    }
+
+    function removeServiceProcess(id) {
+        document.getElementById(`service-process-${id}`).remove();
+    }
+</script>
+@endpush

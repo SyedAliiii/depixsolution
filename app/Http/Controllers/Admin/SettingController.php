@@ -34,8 +34,14 @@ class SettingController extends Controller
             }
 
             if ($setting) {
+                if (is_array($value)) {
+                    $value = json_encode($value);
+                }
                 $setting->update(['value' => $value]);
             } else {
+                if (is_array($value)) {
+                    $value = json_encode($value);
+                }
                 Setting::create([
                    'key' => $key,
                    'value' => $value,

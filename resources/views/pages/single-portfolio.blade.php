@@ -78,6 +78,35 @@
             </div>
          </div>
       </div>
+
+      <div class="row mt-5 gaper">
+         @foreach($portfolio->details as $index => $detail)
+            @php
+                // Re-use the pattern logic: 2 big, 4 small, repeat. 
+                // Pattern sequence (index % 6): 0 (big), 1 (big), 2 (small), 3 (small), 4 (small), 5 (small)
+                $patternIndex = $index % 6;
+                $colClass = ($patternIndex == 0 || $patternIndex == 1) ? 'col-12 col-lg-6' : 'col-12 col-lg-6 col-xxl-3';
+            @endphp
+            <div class="{{ $colClass }}">
+                <div class="portfolio-m__single topy-tilt fade-top">
+                   <div class="thumb">
+                      <a href="javascript:void(0)">
+                         @if($detail->image_path)
+                            <img src="{{ asset($detail->image_path) }}" alt="Detail Image">
+                         @endif
+                      </a>
+                   </div>
+                   <div class="content">
+                      @if($detail->text)
+                      <h3 class="light-title-lg">
+                         <a href="javascript:void(0)">{{ $detail->text }}</a>
+                      </h3>
+                      @endif
+                   </div>
+                </div>
+            </div>
+         @endforeach
+      </div>
    </div>
 </section>
 <!-- ==== / project details end ==== -->

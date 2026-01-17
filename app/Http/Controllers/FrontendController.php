@@ -23,7 +23,7 @@ class FrontendController extends Controller
         $services = Service::active()->ordered()->take(6)->get();
         $portfolios = Portfolio::active()->ordered()->take(6)->get();
         $testimonials = Testimonial::active()->get();
-// $posts = Post::published()->latest()->take(3)->get();
+        // $posts = Post::published()->latest()->take(3)->get();
         $skills = Skill::active()->ordered()->get();
         $sponsors = Sponsor::active()->ordered()->get();
         
@@ -40,9 +40,10 @@ return view('pages.home', compact('sliders', 'services', 'portfolios', 'testimon
 
     public function services()
     {
+        $settings = Setting::all()->pluck('value', 'key')->toArray();
         $services = Service::where('is_active', true)->orderBy('order')->get();
         $testimonials = Testimonial::where('is_active', true)->latest()->get();
-        return view('pages.services', compact('services', 'testimonials'));
+        return view('pages.services', compact('services', 'testimonials', 'settings'));
     }
 
     public function serviceShow($slug)

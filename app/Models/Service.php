@@ -17,7 +17,17 @@ class Service extends Model
         'features',
         'order',
         'is_active',
+        'details_title',
+        'details_description',
+        'approach_title',
+        'approach_description',
+        'approach_image',
     ];
+
+    public function processes()
+    {
+        return $this->hasMany(ServiceProcess::class)->orderBy('order', 'asc');
+    }
 
     protected $casts = [
         'features' => 'array',

@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 
 class Portfolio extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'title',
         'slug',
@@ -22,6 +25,11 @@ class Portfolio extends Model
         'gallery' => 'array',
         'is_active' => 'boolean',
     ];
+
+    public function details()
+    {
+        return $this->hasMany(PortfolioDetail::class)->orderBy('order');
+    }
 
     protected static function boot()
     {
