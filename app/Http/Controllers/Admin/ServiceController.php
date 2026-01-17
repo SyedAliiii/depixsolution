@@ -39,6 +39,10 @@ class ServiceController extends Controller
             $data['image'] = $this->uploadFile($request, 'image', 'services');
         }
 
+        if ($request->hasFile('banner_image')) {
+            $data['banner_image'] = $this->uploadFile($request, 'banner_image', 'services/banner');
+        }
+
         if ($request->hasFile('approach_image')) {
             $data['approach_image'] = $this->uploadFile($request, 'approach_image', 'services/approach');
         }
@@ -82,6 +86,11 @@ class ServiceController extends Controller
         if ($request->hasFile('image')) {
             $this->deleteFile($service->image);
             $data['image'] = $this->uploadFile($request, 'image', 'services');
+        }
+
+        if ($request->hasFile('banner_image')) {
+            $this->deleteFile($service->banner_image);
+            $data['banner_image'] = $this->uploadFile($request, 'banner_image', 'services/banner');
         }
 
         if ($request->hasFile('approach_image')) {
@@ -131,6 +140,7 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $this->deleteFile($service->image);
+        $this->deleteFile($service->banner_image);
         $this->deleteFile($service->approach_image);
         $service->delete();
 

@@ -48,7 +48,11 @@
          <div class="col-12 col-xl-10">
             <div class="service-details__slider">
                <div class="service-details__slider-single">
-                  @if($service->image)
+                  @if($service->banner_image)
+                  <div class="poster fade-top">
+                     <img src="{{ asset($service->banner_image) }}" alt="Image">
+                  </div>
+                  @elseif($service->image)
                   <div class="poster fade-top">
                      <img src="{{ asset($service->image) }}" alt="Image">
                   </div>

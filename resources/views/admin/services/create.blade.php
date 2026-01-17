@@ -57,6 +57,10 @@
                 <label for="image" class="form-label">Icon / Image</label>
                 <input type="file" class="form-control" id="image" name="image" accept="image/*">
             </div>
+             <div class="mb-3">
+                <label for="banner_image" class="form-label">Banner Image (Top)</label>
+                <input type="file" class="form-control" id="banner_image" name="banner_image" accept="image/*">
+            </div>
             <div class="mb-3">
                 <label for="order" class="form-label">Order</label>
                 <input type="number" class="form-control" id="order" name="order" value="{{ old('order', 0) }}">
