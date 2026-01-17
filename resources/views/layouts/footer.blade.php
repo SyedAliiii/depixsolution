@@ -38,9 +38,9 @@
                       <li>
                          <a href="#">Award Winning</a>
                       </li>
-                      <li>
+                      {{-- <li>
                          <a href="{{ route('blog.index') }}">Blog</a>
-                      </li>
+                      </li> --}}
                       <li>
                          <a href="{{ route('services.index') }}">Services</a>
                       </li>

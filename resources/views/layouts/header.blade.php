@@ -75,14 +75,14 @@
                          </li>
                       </ul>
                    </li>
-                   <li class="navbar__item navbar__item--has-children nav-fade">
+                   {{-- <li class="navbar__item navbar__item--has-children nav-fade">
                     <a href="javascript:void(0)" aria-label="dropdown menu" class="navbar__dropdown-label">Blog</a>
                     <ul class="navbar__sub-menu">
                        <li>
                           <a href="{{ route('blog.index') }}" class="{{ Route::is('blog.*') ? 'active' : '' }}">Blog</a>
                        </li>
                     </ul>
-                 </li>
+                 </li> --}}
                    <li class="navbar__item nav-fade">
                       <a href="{{ route('contact') }}" class="{{ Route::is('contact') ? 'active' : '' }}">Contact Us</a>
                    </li>

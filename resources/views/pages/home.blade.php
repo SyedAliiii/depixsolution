@@ -320,7 +320,7 @@
     </div>
  </section>
  <!-- ==== / testimonial end ==== -->
- <!-- ==== blog start ==== -->
+ {{-- <!-- ==== blog start ==== -->
  <section class="section blog fade-wrapper">
     <div class="container">
        <div class="row justify-content-center">
@@ -361,7 +361,7 @@
        </div>
     </div>
  </section>
- <!-- ==== / blog end ==== -->
+ <!-- ==== / blog end ==== --> --}}
  <!-- ==== sponsor start ==== -->
  <div class="sponsor section pb-0">
     <div class="container-fluid">

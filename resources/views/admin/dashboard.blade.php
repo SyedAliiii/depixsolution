@@ -55,10 +55,10 @@
                     <i class="fa-solid fa-newspaper fa-2x opacity-50"></i>
                 </div>
             </div>
-            <div class="card-footer d-flex align-items-center justify-content-between small">
+            {{-- <div class="card-footer d-flex align-items-center justify-content-between small">
                 <a class="text-white stretched-link" href="{{ route('admin.posts.index') }}">View Details</a>
                 <div class="text-white"><i class="fas fa-angle-right"></i></div>
-            </div>
+            </div> --}}
         </div>
     </div>
 

@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\PortfolioController;
-use App\Http\Controllers\Admin\PostController;
+// use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\SettingController;
@@ -32,7 +32,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     
     Route::resource('sliders', SliderController::class)->except(['show']);
     Route::resource('portfolios', PortfolioController::class)->except(['show']);
-    Route::resource('posts', PostController::class)->except(['show']);
+// Route::resource('posts', PostController::class)->except(['show']);
     Route::resource('services', ServiceController::class)->except(['show']);
     Route::resource('testimonials', TestimonialController::class)->except(['show']);
     Route::resource('teams', \App\Http\Controllers\Admin\TeamController::class);
@@ -60,8 +60,8 @@ Route::get('/services', [FrontendController::class, 'services'])->name('services
 Route::get('/services/{slug}', [FrontendController::class, 'serviceShow'])->name('services.show');
 Route::get('/portfolio', [FrontendController::class, 'portfolio'])->name('portfolio.index');
 Route::get('/portfolio/{slug}', [FrontendController::class, 'portfolioShow'])->name('portfolio.show');
-Route::get('/blog', [FrontendController::class, 'blog'])->name('blog.index');
-Route::get('/blog/{slug}', [FrontendController::class, 'blogPost'])->name('blog.show');
+// Route::get('/blog', [FrontendController::class, 'blog'])->name('blog.index');
+// Route::get('/blog/{slug}', [FrontendController::class, 'blogPost'])->name('blog.show');
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
 Route::get('/teams', [FrontendController::class, 'teams'])->name('teams');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');

@@ -51,9 +51,9 @@
             <a href="{{ route('admin.faqs.index') }}" class="{{ request()->routeIs('admin.faqs.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-question-circle me-2"></i> FAQs
             </a>
-            <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">
+            {{-- <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-newspaper me-2"></i> Blog Posts
-            </a>
+            </a> --}}
             <a href="{{ route('admin.settings.index') }}" class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-gear me-2"></i> Settings
             </a>

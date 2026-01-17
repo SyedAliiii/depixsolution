@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
+// use App\Models\Post;
 use App\Models\Service;
 use App\Models\Testimonial;
 use App\Models\Team;
@@ -23,11 +23,11 @@ class FrontendController extends Controller
         $services = Service::active()->ordered()->take(6)->get();
         $portfolios = Portfolio::active()->ordered()->take(6)->get();
         $testimonials = Testimonial::active()->get();
-        $posts = Post::published()->latest()->take(3)->get();
+// $posts = Post::published()->latest()->take(3)->get();
         $skills = Skill::active()->ordered()->get();
         $sponsors = Sponsor::active()->ordered()->get();
         
-        return view('pages.home', compact('sliders', 'services', 'portfolios', 'testimonials', 'posts', 'skills', 'sponsors', 'settings'));
+return view('pages.home', compact('sliders', 'services', 'portfolios', 'testimonials', 'skills', 'sponsors', 'settings'));
     }
 
     public function about()
@@ -64,17 +64,17 @@ class FrontendController extends Controller
         return view('pages.single-portfolio', compact('portfolio'));
     }
 
-    public function blog()
-    {
-        $posts = Post::where('is_published', true)->latest()->paginate(10);
-        return view('pages.blog', compact('posts'));
-    }
+    // public function blog()
+    // {
+    //     $posts = Post::where('is_published', true)->latest()->paginate(10);
+    //     return view('pages.blog', compact('posts'));
+    // }
 
-    public function blogPost($slug)
-    {
-        $post = Post::where('slug', $slug)->where('is_published', true)->firstOrFail();
-        return view('pages.single-post', compact('post'));
-    }
+    // public function blogPost($slug)
+    // {
+    //     $post = Post::where('slug', $slug)->where('is_published', true)->firstOrFail();
+    //     return view('pages.single-post', compact('post'));
+    // }
 
     public function faq()
     {
