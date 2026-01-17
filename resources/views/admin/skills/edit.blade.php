@@ -29,7 +29,8 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <div class="form-check mt-4">
-                        <input class="form-check-input" type="checkbox" id="is_active" name="is_active" {{ $skill->is_active ? 'checked' : '' }}>
+                        <input type="hidden" name="is_active" value="0">
+                        <input class="form-check-input" type="checkbox" value="1" id="is_active" name="is_active" {{ $skill->is_active ? 'checked' : '' }}>
                         <label class="form-check-label" for="is_active">
                             Is Active
                         </label>
