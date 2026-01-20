@@ -188,81 +188,6 @@
     </div>
  </section>
  <!-- ==== / portfolio end ==== -->
- <!-- ==== testimonial start ==== -->
- <section class="section testimonial pt-0 position-relative">
-    <div class="testimonial__text-slider">
-        @for ($i = 0; $i < 7; $i++)
-       <div class="testimonial__text-slider-single">
-          <h2 class="h1">
-             <a href="client-feedback.html">
-                client's testimonial
-                <i class="fa-sharp fa-solid fa-arrow-down-right"></i>
-             </a>
-          </h2>
-       </div>
-       @endfor
-    </div>
-    <div class="container position-relative">
-       <div class="row">
-          <div class="col-12 col-xxl-10">
-             <div class="testimonial-s__slider">
-                @foreach($testimonials as $testimonial)
-                <div class="testimonial-s__slider-single">
-                   <div class="row gaper align-items-center">
-                      <div class="col-12 col-lg-4 col-xxl-4">
-                         <div class="thumb">
-                            <img src="{{ asset($testimonial->image) }}" alt="Image">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="322"
-                               viewBox="0 0 44 322" fill="none" class="d-none d-lg-block">
-                               <path d="M43 -0.000976562V151.999L2 192.999H43V321.999" stroke="#414141" />
-                            </svg>
-                         </div>
-                      </div>
-                      <div class="col-12 col-lg-7 offset-lg-1 col-xxl-7 offset-xxl-1">
-                         <div class="testimonial-s__content">
-                            <div class="quote">
-                               <i class="fa-solid fa-quote-right"></i>
-                            </div>
-                            <div class="content">
-                               <h4>{{ $testimonial->content }}</h4>
-                            </div>
-                            <div class="content-cta">
-                               <h5>{{ $testimonial->name }}</h5>
-                               <p>{{ $testimonial->designation }}</p>
-                               @for($k=0; $k < $testimonial->rating; $k++)
-                                <i class="fa-solid fa-star text-warning small"></i>
-                               @endfor
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-                @endforeach
-             </div>
-          </div>
-       </div>
-       <div class="slide-group justify-content-start">
-          <a href="javascript:void(0)" aria-label="previous item" class="slide-btn prev-testimonial-three">
-             <i class="fa-light fa-angle-left"></i>
-          </a>
-          <a href="javascript:void(0)" aria-label="next item" class="slide-btn next-testimonial-three">
-             <i class="fa-light fa-angle-right"></i>
-          </a>
-       </div>
-    </div>
-    <div class="other-section">
-       <img class="other-section-image" src="{{ asset('assets/images/testimonial/s-thumb.png') }}"
-          alt="Next Slide Image">
-    </div>
-    <div class="lines d-none d-lg-flex">
-       <div class="line"></div>
-       <div class="line"></div>
-       <div class="line"></div>
-       <div class="line"></div>
-       <div class="line"></div>
-    </div>
- </section>
- <!-- ==== / testimonial end ==== -->
  {{-- <!-- ==== blog start ==== -->
  <section class="section blog fade-wrapper">
     <div class="container">
@@ -383,6 +308,81 @@
     </div>
  </section>
  <!-- ==== / offer end ==== -->
+ <!-- ==== testimonial start ==== -->
+ <section class="section testimonial pt-0 position-relative">
+    <div class="testimonial__text-slider">
+        @for ($i = 0; $i < 7; $i++)
+       <div class="testimonial__text-slider-single">
+          <h2 class="h1">
+             <a href="client-feedback.html">
+                client's testimonial
+                <i class="fa-sharp fa-solid fa-arrow-down-right"></i>
+             </a>
+          </h2>
+       </div>
+       @endfor
+    </div>
+    <div class="container position-relative">
+       <div class="row">
+          <div class="col-12 col-xxl-10">
+             <div class="testimonial-s__slider">
+                @foreach($testimonials as $testimonial)
+                <div class="testimonial-s__slider-single">
+                   <div class="row gaper align-items-center">
+                      <div class="col-12 col-lg-4 col-xxl-4">
+                         <div class="thumb">
+                            <img src="{{ asset($testimonial->image) }}" alt="Image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="322"
+                               viewBox="0 0 44 322" fill="none" class="d-none d-lg-block">
+                               <path d="M43 -0.000976562V151.999L2 192.999H43V321.999" stroke="#414141" />
+                            </svg>
+                         </div>
+                      </div>
+                      <div class="col-12 col-lg-7 offset-lg-1 col-xxl-7 offset-xxl-1">
+                         <div class="testimonial-s__content">
+                            <div class="quote">
+                               <i class="fa-solid fa-quote-right"></i>
+                            </div>
+                            <div class="content">
+                               <h4>{{ $testimonial->content }}</h4>
+                            </div>
+                            <div class="content-cta">
+                               <h5>{{ $testimonial->name }}</h5>
+                               <p>{{ $testimonial->designation }}</p>
+                               @for($k=0; $k < $testimonial->rating; $k++)
+                                <i class="fa-solid fa-star text-warning small"></i>
+                               @endfor
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                @endforeach
+             </div>
+          </div>
+       </div>
+       <div class="slide-group justify-content-start">
+          <a href="javascript:void(0)" aria-label="previous item" class="slide-btn prev-testimonial-three">
+             <i class="fa-light fa-angle-left"></i>
+          </a>
+          <a href="javascript:void(0)" aria-label="next item" class="slide-btn next-testimonial-three">
+             <i class="fa-light fa-angle-right"></i>
+          </a>
+       </div>
+    </div>
+    <div class="other-section">
+       <img class="other-section-image" src="{{ asset('assets/images/testimonial/s-thumb.png') }}"
+          alt="Next Slide Image">
+    </div>
+    <div class="lines d-none d-lg-flex">
+       <div class="line"></div>
+       <div class="line"></div>
+       <div class="line"></div>
+       <div class="line"></div>
+       <div class="line"></div>
+    </div>
+ </section>
+ <!-- ==== / testimonial end ==== -->
  <!-- ==== next page start ==== -->
  {{--  <section class="section next-page">
     <div class="container">
