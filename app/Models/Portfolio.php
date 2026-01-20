@@ -15,6 +15,7 @@ class Portfolio extends Model
         'slug',
         'category',
         'image',
+        'banner_image',
         'description',
         'gallery',
         'order',

@@ -72,7 +72,11 @@
             <div class="poster__slider-wrapper">
                <div class="poster__slider">
                   <div class="poster__slider-single">
-                     <img src="{{ asset($portfolio->image) }}" alt="Image">
+                     @if($portfolio->banner_image)
+                        <img src="{{ asset($portfolio->banner_image) }}" alt="Image">
+                     @elseif($portfolio->image)
+                        <img src="{{ asset($portfolio->image) }}" alt="Image">
+                     @endif
                   </div>
                </div>
             </div>

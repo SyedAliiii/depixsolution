@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portfolio;
+use App\Models\PortfolioDetail;
 use App\Http\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -29,11 +30,18 @@ class PortfolioController extends Controller
             'title' => 'required|string|max:255',
             'category' => 'required',
             'image' => 'required|image|max:2048',
+            'details' => 'nullable|array',
+            'details.*.image' => 'nullable|image|max:2048',
+            'details.*.text' => 'nullable|string',
         ]);
 
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
         $data['image'] = $this->uploadFile($request, 'image', 'portfolios');
+        
+        if ($request->hasFile('banner_image')) {
+            $data['banner_image'] = $this->uploadFile($request, 'banner_image', 'portfolios/banner');
+        }
 
         $portfolio = Portfolio::create($data);
 
@@ -48,7 +56,7 @@ class PortfolioController extends Controller
 
                     if (isset($detail['image']) && $detail['image'] instanceof \Illuminate\Http\UploadedFile) {
                         $file = $detail['image'];
-                        $filename = time() . '_' . $file->getClientOriginalName();
+                        $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
                         $file->move(public_path('uploads/portfolios'), $filename);
                         $detailData['image_path'] = 'uploads/portfolios/' . $filename;
                     }
@@ -70,6 +78,9 @@ class PortfolioController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+            'details' => 'nullable|array',
+            'details.*.image' => 'nullable|image|max:2048',
+            'details.*.text' => 'nullable|string',
         ]);
 
         $data = $request->all();
@@ -78,6 +89,11 @@ class PortfolioController extends Controller
         if ($request->hasFile('image')) {
             $this->deleteFile($portfolio->image);
             $data['image'] = $this->uploadFile($request, 'image', 'portfolios');
+        }
+
+        if ($request->hasFile('banner_image')) {
+            $this->deleteFile($portfolio->banner_image);
+            $data['banner_image'] = $this->uploadFile($request, 'banner_image', 'portfolios/banner');
         }
 
         $portfolio->update($data);
@@ -151,6 +167,7 @@ class PortfolioController extends Controller
     public function destroy(Portfolio $portfolio)
     {
         $this->deleteFile($portfolio->image);
+        $this->deleteFile($portfolio->banner_image);
         foreach($portfolio->details as $detail) {
              if ($detail->image_path && file_exists(public_path($detail->image_path))) {
                 unlink(public_path($detail->image_path));

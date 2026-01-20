@@ -50,8 +50,8 @@
       <div class="row gaper align-items-center">
          <div class="col-12 col-lg-6">
             <div class="agency__thumb">
-               <img src="{{ asset('assets/images/agency/thumb-one.png') }}" alt="Image" class="thumb-one fade-left">
-               <img src="{{ asset('assets/images/agency/thumb-two.png') }}" alt="Image" class="thumb-two fade-right">
+               <img src="{{ isset($settings['home_agency_thumb_one']) ? asset($settings['home_agency_thumb_one']) : asset('assets/images/agency/thumb-one.png') }}" alt="Image" class="thumb-one fade-left">
+               <img src="{{ isset($settings['home_agency_thumb_two']) ? asset($settings['home_agency_thumb_two']) : asset('assets/images/agency/thumb-two.png') }}" alt="Image" class="thumb-two fade-right">
             </div>
          </div>
          <div class="col-12 col-lg-6">
@@ -61,31 +61,27 @@
                   <i class="fa-solid fa-arrow-right"></i>
                </span>
                <h2 class="title title-anim">
-                  We are digital creative
-                  agency in London
+                  {{ $settings['home_agency_title'] ?? 'We are digital creative agency in London' }}
                </h2>
                <div class="paragraph">
-                  <p>Bring to the table win-win survival strategies to ensure proactive domination. At
-                     the end of the day, going forward, a new normal that has evolved from generation on
-                     the runway heading towards a streamlined cloud solution going forward porttitor
-                     dictum sapien.</p>
+                  <p>{{ $settings['home_agency_content'] ?? 'Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation on the runway heading towards a streamlined cloud solution going forward porttitor dictum sapien.' }}</p>
                </div>
                <div class="skill-wrap">
-                   @foreach($skills as $skill)
-                   <div class="skill-bar-single">
-                      <div class="skill-bar-title">
-                         <p class="primary-text">{{ $skill->name }}</p>
-                      </div>
-                      <div class="skill-bar-wrapper" data-percent="{{ $skill->percent }}%">
-                         <div class="skill-bar">
-                            <div class="skill-bar-percent">
-                               <span class="percent-value"></span>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                   @endforeach
-                </div>
+                  @foreach($skills as $skill)
+                  <div class="skill-bar-single">
+                     <div class="skill-bar-title">
+                        <p class="primary-text">{{ $skill->name }}</p>
+                     </div>
+                     <div class="skill-bar-wrapper" data-percent="{{ $skill->percent }}%">
+                        <div class="skill-bar">
+                           <div class="skill-bar-percent">
+                              <span class="percent-value"></span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  @endforeach
+               </div>
                <div class="section__content-cta">
                   <a href="{{ route('about') }}" class="btn btn--primary">Know More</a>
                </div>
