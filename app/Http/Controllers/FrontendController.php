@@ -32,10 +32,11 @@ return view('pages.home', compact('sliders', 'services', 'portfolios', 'testimon
 
     public function about()
     {
+        $settings = Setting::all()->pluck('value', 'key')->toArray();
         $teams = Team::active()->ordered()->get();
         $skills = Skill::active()->ordered()->get();
         $testimonials = Testimonial::active()->get(); // If needed for about page
-        return view('pages.about', compact('teams', 'skills', 'testimonials'));
+        return view('pages.about', compact('teams', 'skills', 'testimonials', 'settings'));
     }
 
     public function services()
