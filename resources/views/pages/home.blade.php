@@ -263,60 +263,6 @@
     </div>
  </section>
  <!-- ==== / testimonial end ==== -->
- <!-- ==== offer start ==== -->
- <section class="section offer fade-wrapper light">
-    <div class="container">
-       <div class="row gaper">
-          <div class="col-12 col-lg-5">
-             <div class="offer__content section__content">
-                <span class="sub-title">
-                   WHAT WE OFFER
-                   <i class="fa-solid fa-arrow-right"></i>
-                </span>
-                <h2 class="title title-anim">
-                   {{ $settings['home_offer_title'] ?? 'Giving Your Business Some Great Ideas' }}
-                </h2>
-                <div class="paragraph">
-                   <p>{{ $settings['home_offer_content'] ?? 'Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation on the runway heading towards a streamlined cloud solution going forward porttitor dictum sapien.' }}</p>
-                </div>
-                <div class="section__content-cta">
-                   <a href="{{ route('services.index') }}" class="btn btn--secondary">view all services</a>
-                </div>
-             </div>
-          </div>
-          <div class="col-12 col-lg-7 col-xl-6 offset-xl-1">
-             <div class="offer__cta">
-                @foreach($services as $index => $service)
-                <div class="offer__cta-single fade-top">
-                   <span class="sub-title">
-                      {{ sprintf('%02d', $index + 1) }}
-                      <i class="fa-solid fa-arrow-right"></i>
-                   </span>
-                   <h2>
-                      <a href="{{ route('services.show', $service->slug) }}">
-                         {{ $service->title }}
-                         <i class="fa-sharp fa-solid fa-arrow-up-right"></i>
-                      </a>
-                   </h2>
-                   <div class="offer-thumb-hover d-none d-md-block"
-                      data-background="{{ asset($service->image) }}"></div>
-                </div>
-                @endforeach
-                <!-- Add more offer items as needed -->
-             </div>
-          </div>
-       </div>
-    </div>
-    <img src="{{ asset('assets/images/offer/star.png') }}" alt="Image" class="star">
-    <div class="lines d-none d-lg-flex">
-       <div class="line"></div>
-       <div class="line"></div>
-       <div class="line"></div>
-       <div class="line"></div>
-       <div class="line"></div>
-    </div>
- </section>
- <!-- ==== / offer end ==== -->
  {{-- <!-- ==== blog start ==== -->
  <section class="section blog fade-wrapper">
     <div class="container">
@@ -383,8 +329,62 @@
     </div>
  </div>
  <!-- ==== / sponsor end ==== -->
+ <!-- ==== offer start ==== -->
+ <section class="section offer fade-wrapper light">
+    <div class="container">
+       <div class="row gaper">
+          <div class="col-12 col-lg-5">
+             <div class="offer__content section__content">
+                <span class="sub-title">
+                   WHAT WE OFFER
+                   <i class="fa-solid fa-arrow-right"></i>
+                </span>
+                <h2 class="title title-anim">
+                   {{ $settings['home_offer_title'] ?? 'Giving Your Business Some Great Ideas' }}
+                </h2>
+                <div class="paragraph">
+                   <p>{{ $settings['home_offer_content'] ?? 'Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation on the runway heading towards a streamlined cloud solution going forward porttitor dictum sapien.' }}</p>
+                </div>
+                <div class="section__content-cta">
+                   <a href="{{ route('services.index') }}" class="btn btn--secondary">view all services</a>
+                </div>
+             </div>
+          </div>
+          <div class="col-12 col-lg-7 col-xl-6 offset-xl-1">
+             <div class="offer__cta">
+                @foreach($services as $index => $service)
+                <div class="offer__cta-single fade-top">
+                   <span class="sub-title">
+                      {{ sprintf('%02d', $index + 1) }}
+                      <i class="fa-solid fa-arrow-right"></i>
+                   </span>
+                   <h2>
+                      <a href="{{ route('services.show', $service->slug) }}">
+                         {{ $service->title }}
+                         <i class="fa-sharp fa-solid fa-arrow-up-right"></i>
+                      </a>
+                   </h2>
+                   <div class="offer-thumb-hover d-none d-md-block"
+                      data-background="{{ asset($service->image) }}"></div>
+                </div>
+                @endforeach
+                <!-- Add more offer items as needed -->
+             </div>
+          </div>
+       </div>
+    </div>
+    <img src="{{ asset('assets/images/offer/star.png') }}" alt="Image" class="star">
+    <div class="lines d-none d-lg-flex">
+       <div class="line"></div>
+       <div class="line"></div>
+       <div class="line"></div>
+       <div class="line"></div>
+       <div class="line"></div>
+    </div>
+ </section>
+ <!-- ==== / offer end ==== -->
  <!-- ==== next page start ==== -->
- <section class="section next-page">
+ {{--  <section class="section next-page">
     <div class="container">
        <div class="row justify-content-center">
           <div class="col-12 col-lg-8">
@@ -416,6 +416,6 @@
        <div class="line"></div>
        <div class="line"></div>
     </div>
- </section>
+ </section> --}}
  <!-- ==== / next page end ==== -->
 @endsection
