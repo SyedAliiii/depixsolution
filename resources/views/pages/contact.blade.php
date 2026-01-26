@@ -3,6 +3,11 @@
 @section('title', 'Contact Us - DepixStudio Digital Agency')
 
 @section('content')
+<style>
+   .primaryColor{
+      filter: hue-rotate(200deg) saturate(1.4) brightness(0.9);
+   }
+</style>
 @php
     $settings = \App\Models\Setting::all()->pluck('value', 'key');
 @endphp
@@ -39,7 +44,7 @@
          <div class="col-12 col-sm-6 col-xl-3">
             <div class="contact-m__single topy-tilt fade-top">
                <div class="thumb">
-                  <img src="{{ asset('assets/images/phone.png') }}" alt="Image">
+                  <img src="{{ asset('assets/images/phone.png') }}" class="primaryColor" alt="Image">
                </div>
                <div class="content">
                   <h4>Phone & Fax</h4>
@@ -52,7 +57,7 @@
          <div class="col-12 col-sm-6 col-xl-3">
             <div class="contact-m__single topy-tilt fade-top">
                <div class="thumb">
-                  <img src="{{ asset('assets/images/mail.png') }}" alt="Image">
+                  <img src="{{ asset('assets/images/mail.png') }}" class="primaryColor" alt="Image">
                </div>
                <div class="content">
                   <h4>Mail Address</h4>
@@ -65,7 +70,7 @@
          <div class="col-12 col-sm-6 col-xl-3">
             <div class="contact-m__single topy-tilt fade-top">
                <div class="thumb">
-                  <img src="{{ asset('assets/images/location.png') }}" alt="Image">
+                  <img src="{{ asset('assets/images/location.png') }}" class="primaryColor" alt="Image">
                </div>
                <div class="content">
                   <h4>Our Location</h4>
@@ -80,7 +85,7 @@
          <div class="col-12 col-sm-6 col-xl-3">
             <div class="contact-m__single topy-tilt fade-top">
                <div class="thumb">
-                  <img src="{{ asset('assets/images/time.png') }}" alt="Image">
+                  <img src="{{ asset('assets/images/time.png') }}" class="primaryColor" alt="Image">
                </div>
                <div class="content">
                   <h4>Office Hour</h4>
