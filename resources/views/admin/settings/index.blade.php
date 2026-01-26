@@ -160,6 +160,27 @@
         </div>
     </div>
 
+    <h5 class="mb-3 border-bottom pb-2">About Page Content</h5>
+    <div class="row mb-4">
+        <div class="col-md-12 mb-3">
+            <label class="form-label">About Hero Text</label>
+            <textarea class="form-control" name="about_hero_text" rows="3">{{ $settings['about_hero_text'] ?? '' }}</textarea>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Video Background Image</label>
+            <input type="file" class="form-control" name="about_video_background">
+            @if(isset($settings['about_video_background']))
+                <div class="mt-2">
+                    <img src="{{ asset($settings['about_video_background']) }}" style="height: 100px;">
+                </div>
+            @endif
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Video Link</label>
+            <input type="url" class="form-control" name="about_video_link" value="{{ $settings['about_video_link'] ?? '' }}">
+        </div>
+    </div>
+
     <h5 class="mb-3 border-bottom pb-2">Social Media</h5>
     <div class="row mb-4">
         <div class="col-md-6 mb-3">

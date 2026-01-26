@@ -31,7 +31,7 @@
           <div class="offcanvas-menu__header nav-fade">
              <div class="logo">
                 <a href="{{ route('home') }}">
-                   <img src="{{ asset('assets/images/logo.png') }}" alt="DepixStudio" title="DepixStudio">
+                   <img src="{{ isset($settings['site_logo']) ? asset($settings['site_logo']) : asset('assets/images/logo.png') }}" alt="DepixStudio" title="DepixStudio">
                 </a>
              </div>
              <a href="javascript:void(0)" aria-label="close offcanvas menu" class="close-offcanvas-menu">
@@ -95,16 +95,16 @@
              </div>
           </div>
           <div class="offcanvas-menu__social social nav-fade">
-             <a href="https://www.facebook.com/" target="_blank" aria-label="share us on facebook">
+             <a href="{{ isset($settings['social_facebook']) ? $settings['social_facebook'] : '#' }}" target="_blank" aria-label="share us on facebook">
                 <i class="fa-brands fa-facebook-f"></i>
              </a>
-             <a href="https://www.behance.net/" target="_blank" aria-label="share us on behance">
+             <a href="{{ isset($settings['social_behance']) ? $settings['social_behance'] : '#' }}" target="_blank" aria-label="share us on behance">
                 <i class="fa-brands fa-behance"></i>
              </a>
-             <a href="https://www.pinterest.com/" target="_blank" aria-label="share us on pinterest">
+             <a href="{{ isset($settings['social_linkedin']) ? $settings['social_linkedin'] : '#' }}" target="_blank" aria-label="share us on pinterest">
                 <i class="fa-brands fa-linkedin-in"></i>
              </a>
-             <a href="https://www.instagram.com/" target="_blank" aria-label="share us on instagram">
+             <a href="{{ isset($settings['social_instagram']) ? $settings['social_instagram'] : '#' }}" target="_blank" aria-label="share us on instagram">
                 <i class="fa-brands fa-instagram"></i>
              </a>
           </div>

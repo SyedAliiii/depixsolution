@@ -27,8 +27,7 @@
          </div>
          <div class="col-12 col-lg-7 col-xl-5">
             <div class="text-center text-lg-start">
-               <p class="primary-text">We're an UK-based top-notch design agency committed to partnering
-                  with good companies and hiring the right people for the right roles.</p>
+               <p class="primary-text">{{ $settings['about_hero_text'] ?? "We're an UK-based top-notch design agency committed to partnering with good companies and hiring the right people for the right roles." }}</p>
             </div>
          </div>
       </div>
@@ -37,8 +36,8 @@
 <!-- ==== / banner end ==== -->
 <!-- ==== video modal start ==== -->
 <div class="video-modal">
-   <img src="{{ asset('assets/images/modal-bg.png') }}" alt="Image" class="modal-bg">
-   <a class="video-frame video-btn" href="https://www.youtube.com/watch?v=RvreULjnzFo" target="_blank">
+   <img src="{{ isset($settings['about_video_background']) ? asset($settings['about_video_background']) : asset('assets/images/modal-bg.png') }}" alt="Image" class="modal-bg">
+   <a class="video-frame video-btn" href="{{ isset($settings['about_video_link']) ? $settings['about_video_link'] : 'https://www.youtube.com/watch?v=RvreULjnzFo' }}" target="_blank">
       <img src="{{ asset('assets/images/video-frame-two.png') }}" alt="Image">
       <i class="fa-sharp fa-solid fa-play"></i>
    </a>

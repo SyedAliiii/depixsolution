@@ -4,7 +4,7 @@
           <div class="col-12 col-lg-5 col-xl-6">
              <div class="footer__single">
                 <a href="{{ route('home') }}" class="logo">
-                   <img src="{{ asset('assets/images/logo.png') }}" alt="Image">
+                   <img src="{{ isset($settings['site_logo']) ? asset($settings['site_logo']) : asset('assets/images/logo.png') }}" alt="Image">
                 </a>
                 <div class="footer__single-meta">
                    <a href="#" target="_blank">
@@ -90,10 +90,10 @@
                    </div>
                    <div class="col-12 col-lg-4">
                       <div class="social justify-content-center justify-content-lg-end">
-                         <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-                         <a href="#" target="_blank"><i class="fa-brands fa-behance"></i></a>
-                         <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                         <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                         <a href="{{ isset($settings['social_facebook']) ? $settings['social_facebook'] : '#' }}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                         <a href="{{ isset($settings['social_behance']) ? $settings['social_behance'] : '#' }}" target="_blank"><i class="fa-brands fa-behance"></i></a>
+                         <a href="{{ isset($settings['social_linkedin']) ? $settings['social_linkedin'] : '#' }}" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                         <a href="{{ isset($settings['social_instagram']) ? $settings['social_instagram'] : '#' }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                       </div>
                    </div>
                 </div>
