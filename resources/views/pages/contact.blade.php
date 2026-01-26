@@ -3,6 +3,9 @@
 @section('title', 'Contact Us - DepixStudio Digital Agency')
 
 @section('content')
+@php
+    $settings = \App\Models\Setting::all()->pluck('value', 'key');
+@endphp
 <!-- ==== banner start ==== -->
 <section class="cmn-banner bg-img" data-background="{{ asset('assets/images/banner/cmn-banner-bg.png') }}">
    <div class="container">
