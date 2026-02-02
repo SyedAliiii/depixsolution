@@ -40,7 +40,7 @@
     </div>
     <img src="{{ asset($settings['home_banner_thumb']) ?? '' }}" alt="Image"
        class="banner-one-thumb d-none d-sm-block g-ban-one">
-    <img src="{{ asset('assets/images/star.png') }}" alt="Image" class="star">
+    <!-- <img src="{{ asset('assets/images/star.png') }}" alt="Image" class="star"> -->
     <div class="banner-left-text banner-social-text d-none d-md-flex">
        <a href="mailto:{{ $settings['contact_email'] ?? 'info@depixstudio.com' }}">mail : {{ $settings['contact_email'] ?? 'info@depixstudio.com' }}</a>
        <a href="tel:{{ $settings['contact_phone'] ?? '' }}">Call : {{ $settings['contact_phone'] ?? '' }}</a>
@@ -125,7 +125,7 @@
           </div>
        </div>
     </div>
-    <img src="{{ asset('assets/images/star.png') }}" alt="Image" class="star">
+    <!-- <img src="{{ asset('assets/images/star.png') }}" alt="Image" class="star"> -->
     <img src="{{ asset('assets/images/agency/dot-large.png') }}" alt="Image" class="dot-large">
  </section>
  <!-- ==== / agency end ==== -->
@@ -298,7 +298,7 @@
           </div>
        </div>
     </div>
-    <img src="{{ asset('assets/images/offer/star.png') }}" alt="Image" class="star">
+    <!-- <img src="{{ asset('assets/images/offer/star.png') }}" alt="Image" class="star"> -->
     <div class="lines d-none d-lg-flex">
        <div class="line"></div>
        <div class="line"></div>

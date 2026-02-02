@@ -29,6 +29,13 @@
    
    <!-- main css -->
    <link rel="stylesheet" href="{{ asset('assets/css/main.min.css') }}">
+   <style>
+      @media (max-width: 767.98px) {
+         .vid-m {
+            display: none !important;
+         }
+      }
+   </style>
    @stack('styles')
 </head>
 

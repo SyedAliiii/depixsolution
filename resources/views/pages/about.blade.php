@@ -88,7 +88,7 @@
          </div>
       </div>
    </div>
-   <img src="{{ asset('assets/images/star.png') }}" alt="Image" class="star">
+   <!-- <img src="{{ asset('assets/images/star.png') }}" alt="Image" class="star"> -->
    <img src="{{ asset('assets/images/agency/dot-large.png') }}" alt="Image" class="dot-large">
 </section>
 <!-- ==== / agency end ==== -->
