@@ -13,7 +13,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="text-uppercase mb-1">Services</h6>
+                        <h6 class="text-uppercase mb-1">Services </h6>
                         <h2 class="mb-0">{{ \App\Models\Service::count() }}</h2>
                     </div>
                     <i class="fa-solid fa-briefcase fa-2x opacity-50"></i>
